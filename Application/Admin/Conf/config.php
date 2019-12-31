@@ -7,7 +7,7 @@ return array(
 
     //如果父配置有相同的一级key会覆盖，二维的key没影响。
     'TMPL_PARSE_STRING' => array(
-        '__PUBLIC__' => '/public',
+        '__PUBLIC__' => '/Public',
         '__PH__'     => URL_PUBLIC . '/pc',
         '__PM__'     => URL_PUBLIC . '/m',
         '__PU__'     => URL_PUBLIC . '/u',
