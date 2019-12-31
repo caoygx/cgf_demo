@@ -159,8 +159,8 @@ $conf = array(
         'u'       => 'User',
         'm'       => 'Home',
         'api'     => 'Home',
-        'cgf'     => 'Doc',
-        'jpadmin' => 'Admin',
+        'cgf'     => 'Admin',
+        'admin' => 'Admin',
         'test'    => 'Test',
 
     ),
