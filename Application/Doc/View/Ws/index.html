@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$detail.title|default=设备管理}</title>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <style type="text/css">
+        .popover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1010;
+            display: none;
+            max-width: 600px;
+            padding: 1px;
+            text-align: left;
+            white-space: normal;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            background-clip: padding-box
+        }
+
+        #danmu {
+            background: #000 none repeat scroll 0 0;
+            color: #ccc;
+            height: 600px;
+            margin-bottom: 50px;
+            overflow: scroll;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #send_box {
+            /*position: absolute;*/
+            top: 500px;
+            left: 100px;
+        }
+    </style>
+
+
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <!--  <link rel="stylesheet" href="__PUBLIC__/jquery.jsonview.css"/>
+
+    <script type="text/javascript" src="__PUBLIC__/jquery.jsonview.js"></script>
+    <script type="text/javascript">
+        var json = {$detail.return_json};
+        $(function() {
+          $("#json").JSONView(json);
+
+          //$("#json-collapsed").JSONView(json, { collapsed: true, nl2br: true, recursive_collapser: true });
+
+          $('#collapse-btn').on('click', function() {
+            $('#json').JSONView('collapse');
+          });
+
+          $('#expand-btn').on('click', function() {
+            $('#json').JSONView('expand');
+          });
+
+          $('#toggle-btn').on('click', function() {
+            $('#json').JSONView('toggle');
+          });
+
+          $('#toggle-level1-btn').on('click', function() {
+            $('#json').JSONView('toggle', 1);
+          });
+
+          $('#toggle-level2-btn').on('click', function() {
+            $('#json').JSONView('toggle', 2);
+          });
+        });
+      </script>-->
+
+
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+    var device = "browser123";
+    var socket;
+    function connect() {
+        ip = $('#ip').val();
+        if (!ip) {
+            ip = "ws://laaaa.6655.la:9502";
+        }
+        try {
+            socket = new WebSocket(ip);
+        } catch (e) {
+            setDanmu("连接错误:" + e);
+            //alert('连接error');
+            return;
+        }
+        socket.onopen = sOpen;
+        socket.onerror = sError;
+        socket.onmessage = sMessage;
+        socket.onclose = sClose;
+    }
+    function sOpen() {
+        //alert('握手成功');
+
+        setDanmu('连接成功');
+        send(instruction["ws_login"]);
+    }
+    function sError(e) {
+        alert("error " + e);
+
+    }
+
+    //操作类型
+    var action = {
+        "login":"登录",
+        "ws_login":"socket登录",
+        "mv_alipay":"转账支付宝",
+        "mv_bank":"转账银行卡",
+        "bill_query":"查询订单",
+        "tr_create":"创建二维码",
+        "batch_create_tr":"批量创建二维码"
+    };
+    //收到服务器信息
+    function sMessage(e) {
+        console.log("%c receive:"+e.data,"color:green");
+        if (e.data.type == 'bill_query_result') { //显示订单列表
+            $('#modal-body').html(e.data.bill_query_list);
+            $('#myModal').modal('show');
+
+        }
+
+        var ret = eval('(' + e.data + ')');
+
+        if(ret.type == 'log' || ret.type == 'login_result'){
+            setDanmu("【"+ ret.device + "】"+ ret.log_content);
+        }
+
+        if(ret.packet_type == 'browser_broadcast'){ //手机设备回执处理
+            text = "设备返回广播包：";
+            console.log(text);
+
+            str = "【"+ ret.device + "】"+ ret.content.toString();
+            setDanmu(str);
+        }
+
+        if (ret.receipt_status) { //服务器回执处理
+            text = "【"+action[ret.receipt_type] + "】操作已发送";
+            setDanmu(text);
+            //alert('操作成功');
+        }
+    }
+    function sClose(e) {
+        console.log("connect closed:" + e.code);
+        setDanmu('连接关闭 ');
+    }
+    var lastCommand;
+    function send(content) {
+        if(socket == undefined){
+            alert('请先连接服务器');
+            return false;
+        }
+        console.log("%c send :"+content,"color:#00BFFF");
+        lastCommand = content;
+        socket.send(content);
+    }
+    function Close() {
+        socket.close();
+    }
+
+    function setDanmu(value) {
+//      old_html = $('#danmu').html();
+//      $('#danmu').html(old_html + e.data);
+        old_html = $('#danmu').val();
+        $('#danmu').val(old_html + "\n" + value);
+        var scrollTop = $("#danmu")[0].scrollHeight;
+        $("#danmu").scrollTop(scrollTop);
+
+        console.log(value);
+
+    }
+
+    var instruction = {};
+    instruction["login"] = '{"type":"login","device":"56"}';
+    instruction["ws_login"] = '{"type":"ws_login","device":"'+device+'"}';
+
+
+
+    //获取设备列表
+    var url = "__URL__/deviceList";
+    $.get(url, function (data) {
+        $('#box').html(data);
+    });
+
+    function op(to_device, id) {
+
+        var url = "__URL__/params";
+        $.get(url, {"id": id}, function (data) {
+            $('#modal-body').html(data);
+            $('#to_device').val(to_device);
+            $('#device').val(device);
+            $('#myModal').modal({
+                keyboard: false
+            })
+        });
+
+    }
+
+    function sendLastCommand(){
+        send(lastCommand);
+    }
+
+
+
+
+    function urlToJson(string_a) {
+        //var string_a = 'distance=20&limit_start=0&limit_num=3&lng=114.07&lat=22.53';
+        var string = string_a.split('&');
+        var res = {};
+        for (var i = 0; i < string.length; i++) {
+            var str = string[i].split('=');
+            res[str[0]] = str[1];
+        }
+        return JSON.stringify(res);
+        //document.write(JSON.stringify(res));
+    }
+
+    function browerLogin() {
+
+        var data = {};
+        data['type'] = "ws_login";
+        data['device'] = device;
+
+        send(JSON.stringify(data));
+    }
+
+    $(function () {
+        $('#save').on('click', function () {
+
+            if(check()){
+                var params = $('#frm_params').serialize();
+                console.log(params);
+                var request = urlToJson(params);
+                send(request);
+                $('#myModal').modal('hide');
+            }
+
+        });
+
+        //自动连接
+        connect();
+    });
+
+    function check() {
+        checkSuccess  = true;
+        $(".not-null").each(function(){
+            var name = $(this).attr("name");
+            if($(this).val()==""){
+                text = $(this).parent().prev().text();
+                alert(text + '不能为空');
+                checkSuccess = false;
+                that = this;
+                window.setTimeout(
+                    function(){$(that).focus()},0
+                );
+                return false;
+            }
+
+        });
+        return checkSuccess;
+
+    }
+
+
+
+
+</script>
+
+
+<div style="margin: 10px;">
+    服务器地址：<input type="text" id="ip" name="ip"/>
+    <input type="submit" class="btn btn-default" onclick="connect()" value="连接">
+    <button type="submit" class="btn btn-default" onclick="browerLogin()">登录socket服务器</button>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel"></h4>
+            </div>
+            <div class="modal-body" id="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" id="save">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row" style="margin-top:10px;"></div>
+
+
+<div class="row" style="margin: 10px;">
+
+    <div class="col-md-7" id="box">
+        <h3 class="text-center text-primary" style="margin-bottom:50px;">{$type_name}</h3>
+        <form method="get" action="http://192.168.3.212:9502/" target="_blank" class="form-horizontal">
+            <input type="hidden" id="type" name="type" value="{$type}"/>
+            <input type="hidden" id="device" name="device" value="{$Think.get.device}"/>
+
+            <volist id="vo" name="request">
+                <div class="form-group" style="margin-bottom: 10px;">
+                    <label class="col-sm-4 control-label" for="tableFields">{$vo}:</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="hasId" name="{$key}">
+                    </div>
+                </div>
+            </volist>
+
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-10">
+                    <button type="submit" class="btn btn-default">提交</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+    <div class="col-md-5">
+			<textarea id="danmu">
+
+			</textarea>
+    </div>
+</div>
+
+<div class="row">
+
+
+</div>
+
+</body>
+</html>

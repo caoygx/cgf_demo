@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>jOrgChart - A jQuery OrgChart Plugin</title>
+
+    <link href="http://libs.baidu.com/bootstrap/2.0.4/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/jquery.jOrgChart.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <link href="css/prettify.css" type="text/css" rel="stylesheet" />
+
+    <script type="text/javascript" src="prettify.js"></script>
+    
+    <!-- jQuery includes -->
+<!--    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>-->
+    <script src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/jqueryui/1.8.24/jquery-ui.min.js "></script>
+    
+    <script src="jquery.jOrgChart.js"></script>
+
+    <script>
+    jQuery(document).ready(function() {
+        $("#org").jOrgChart({
+            chartElement : '#chart',
+            dragAndDrop  : true
+        });
+    });
+    </script>
+  </head>
+
+  <body onload="prettyPrint();">
+    
+    
+    <ul id="org" style="display:none">
+  <li>曹丕
+    <ul>
+      <li>曹叡
+        <ul>
+          <li>曹冏
+            <ul>
+              <li>曹
+                <ul>
+                  <li>曹一
+                    <ul>
+                      <li>曹二
+                        <ul>
+                          <li>曹三
+                            <ul>
+                              <li>曹四</li>
+                              <li>曹可</li>
+                              <li>曹5</li>
+                              <li>曹5</li>
+                              <li>曹5</li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>曹穆
+            <ul>
+              <li>曹乐</li>
+            </ul>
+          </li>
+          <li>曹殷</li>
+        </ul>
+      </li>
+      <li>曹东乡</li>
+      <li>曹喈</li>
+      <li>曹协</li>
+    </ul>
+  </li>
+  <li>曹彰</li>
+  <li>曹植
+    <ul>
+      <li>曹苗
+        <ul>
+          <li>曹规</li>
+        </ul>
+      </li>
+      <li>曹志</li>
+      <li>曹金瓠</li>
+      <li>曹行女</li>
+    </ul>
+  </li>
+  <li>曹熊</li>
+  <li>曹丕
+    <ul>
+      <li>曹霖
+        <ul>
+          <li>曹髦</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>曹4</li>
+  <li>曹4</li>
+</ul>
+
+    
+    <div id="chart" class="orgChart"></div>
+    
+    <script>
+        jQuery(document).ready(function() {
+            
+            /* Custom jQuery for the example */
+            $("#show-list").click(function(e){
+                e.preventDefault();
+                
+                $('#list-html').toggle('fast', function(){
+                    if($(this).is(':visible')){
+                        $('#show-list').text('Hide underlying list.');
+                        $(".topbar").fadeTo('fast',0.9);
+                    }else{
+                        $('#show-list').text('Show underlying list.');
+                        $(".topbar").fadeTo('fast',1);                  
+                    }
+                });
+            });
+            
+            $('#list-html').text($('#org').html());
+            
+            $("#org").bind("DOMSubtreeModified", function() {
+                $('#list-html').text('');
+                
+                $('#list-html').text($('#org').html());
+                
+                prettyPrint();                
+            });
+        });
+    </script>
+
+</body>
+</html>

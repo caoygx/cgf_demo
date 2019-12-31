@@ -1,0 +1,14 @@
+<form class="form-horizontal" role="form" enctype="multipart/form-data" method="post" action="__ACTION__">
+    <div>正在编辑文件：{$filename}</div>
+    <html:editor id="editor" name="content" type="kindeditor" style="width:80%;height:800px;visibility:hidden;">
+        {$content}
+    </html:editor>
+
+    <input type="hidden" id="filename" name="filename" value="{$filename}" />
+    <input class="btn btn-info" type="submit" name="sub" value="保存"/>
+
+</form>
+
+
+
+

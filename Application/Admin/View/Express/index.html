@@ -1,0 +1,112 @@
+
+
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div data-original-title="" class="box-header well"><!-- <i class="icon-user"></i> <a href="add" class=""></a>{$pageTitle}--></div>
+        <div class="box-content">
+            <form method='get' action="__SELF__"  class="form-inline">
+                  <div class="form-group" >
+    <label for="id"> id</label>
+    
+       <input  type="hidden"  class="form-control" name="id" id="id"  value="{$vo.id}" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="order_id"> 订单号</label>
+    
+       <input  class="form-control" name="order_id" type="text" id="order_id" size="30" value="{$vo[order_id] ? $vo[order_id] : $_GET[order_id]}" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="goods_id"> 商品id</label>
+    
+       <input  class="form-control" name="goods_id" type="text" id="goods_id" size="10" value="{$vo[goods_id] ? $vo[goods_id] : $_GET[goods_id]}" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="freight"> 运费</label>
+    
+       <input  class="form-control" name="freight" type="text" id="freight" size="10" value="{$vo[freight] ? $vo[freight] : $_GET[freight]}" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="express"> 快递公司</label>
+    
+       <input  class="form-control" name="express" type="text" id="express" size="30" value="{$vo[express] ? $vo[express] : $_GET[express]}" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="express_no"> 快递单号</label>
+    
+       <input  class="form-control" name="express_no" type="text" id="express_no" size="30" value="{$vo[express_no] ? $vo[express_no] : $_GET[express_no]}" />
+       </div>
+   
+
+
+		      <button type="submit" class="btn btn-primary">搜索</button>
+		    </form>
+            <br />
+            <php>  $query = strstr($_SERVER["REQUEST_URI"],'?');    </php>
+
+            <php>if(0==1){</php>
+            <a href="__CONTROLLER__/add" type="button" class="btn btn-warning">添加</a>
+            <php>}</php>
+
+
+            <php>if(0==1){</php>
+            <a href="__CONTROLLER__/exportExcel<?=$query?>" type="button" class="btn btn-warning">导出</a>
+            <php>}</php>
+
+
+           <!-- show="id:编号|8%,title:名称:edit,create_time|toDate='y-m-d':创建时间,status|getStatus2:状态,{$fields}"-->
+            <html:list id="checkList" name="vo" style="table table-striped table-bordered bootstrap-datatable datatable" checkbox="true" action="true"  datasource="list" show="id:id::sort,order_id:订单号::sort,goods_id:商品id::sort,freight:运费::sort,express:快递公司::sort,express_no:快递单号::sort,modify_t:修改时间::sort," actionlist="express_"/>
+            <div>
+                <php>if(0==1){</php>
+                <a href="javascript:;" onclick="del();" class="btn btn-info"> 批量禁用</a>
+                <php>}</php>
+
+                <php>if(0==1){</php>
+                <a href="javascript:;" onclick="foreverdel();" class="btn btn-danger"> 批量删除</a>
+                <php>}</php>
+            </div>
+            <div class="container text-center">
+                {$page}
+                <div style="margin-top:10px;">跳转到<input type="text" style="width: 100px;" id="txt_page" name="txt_page" >页 <input id="btn_jump" type="button" value="跳转"></div>
+                </div>
+ 
+        </div>
+    </div>
+
+</div>
+
+<script src="__PUBLIC__/common/express.js"></script>
+
+<script>
+    <php>
+        $params = I('get.');
+        unset($params['p']);
+        $params = http_build_query($params);
+    </php>
+
+        $(function () {
+            console.log(URL);
+
+            $('#btn_jump').click(function () {
+                goPage();
+            });
+            function goPage() {
+                var params = '{$params}';
+                var url = CONTROLLER+"/index?"+params;
+                url += "&p="+$('#txt_page').val();
+                window.location.href = url;
+
+            }
+        });
+
+</script>

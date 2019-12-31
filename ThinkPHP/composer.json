@@ -1,0 +1,32 @@
+{
+    "config": {
+        
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "digitick/yii-google-analytics",
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/digitick/yii-google-analytics",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "~6.3",
+        "pingplusplus/pingpp-php": "2.2.3",
+        "fzaninotto/faker":"^1.8@dev",
+        "char0n/ffmpeg-php": "dev-master",
+        "mrclay/minify": "~3.0.0",
+        "matthiasmullie/minify": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "zt/unit-test":"*",
+        "bupt1987/html-parser":"dev-master"
+    }
+}

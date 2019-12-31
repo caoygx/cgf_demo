@@ -1,0 +1,90 @@
+
+
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div data-original-title="" class="box-header well"> <i class="icon-user"></i> <a href="Order/add" class="">添加</a>系统</div>
+        <div class="box-content">
+            <form method='get' action="__SELF__"  class="form-inline">
+                  <div class="form-group" >
+    <label for="{$name}"> 用户类型</label>
+    
+       <html:select  first="请选择" options='opt_user_type' selected='user_type_selected' name="user_type" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="{$name}"> 商品名称</label>
+    
+       <input  class="form-control" name="goods_name" type="text" id="goods_name" size="" value="{$vo[goods_name] ? $vo[goods_name] : $_GET[goods_name]}" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="{$name}"> 渠道</label>
+    
+       <input  class="form-control" name="ch" type="text" id="ch" size="" value="{$vo[ch] ? $vo[ch] : $_GET[ch]}" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="{$name}"> 订单状态</label>
+    
+       <html:select  first="请选择" options='opt_status' selected='status_selected' name="status" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="{$name}"> 会员号</label>
+    
+       <input  class="form-control" name="memberno" type="text" id="memberno" size="" value="{$vo[memberno] ? $vo[memberno] : $_GET[memberno]}" />
+       </div>
+   
+
+
+		      <button type="submit" class="btn btn-primary">搜索</button>
+		    </form>
+            <br />
+
+           <!-- show="id:编号|8%,title:名称:edit,create_time|toDate='y-m-d':创建时间,status|getStatus2:状态,{$fields}"-->
+
+            <html:list id="checkList" name="vo" style="table table-striped table-bordered bootstrap-datatable datatable" checkbox="true" action="true"  datasource="list" show="id:编号22,create_t:订单时间,memberno:会员号,ch:渠道,address:地址,tel:电话,login_mobile:登录手机,phone:电话,cname:,send_no:发货单号,pur_price:采购价,pur_channel:采购渠道,pur_t:采购时间,express:配送信息,express_no:快递单号,mem_code:会员充值号,order_id:订单号,act_goods_id:商品ID,goods_name:商品名称,status_text:订单状态,total_num:拍卖次数,already_num:参加次数,unit_price:单价,bid_price:奖品价格,need_price:采购价," actionlist="status|showStatus=$user['id'],edit:编辑:id,foreverdel:永久删除:id"/>
+            <div>
+                <a href="javascript:;" onclick="del();" class="btn btn-info"> 批量禁用</a>
+                <a href="javascript:;" onclick="foreverdel();" class="btn btn-danger"> 批量删除</a>
+            </div>
+            <div class="container text-center">
+                {$page}
+                <div style="margin-top:10px;">跳转到<input type="text" style="width: 100px;" id="txt_page" name="txt_page" >页 <input id="btn_jump" type="button" value="跳转"></div>
+                </div>
+ 
+        </div>
+    </div>
+
+</div>
+
+<script src="__PUBLIC__/common/order.js"></script>
+
+<script>
+    <php>
+        $params = I('get.');
+        unset($params['p']);
+        $params = http_build_query($params);
+    </php>
+
+        $(function () {
+            console.log(URL);
+
+            $('#btn_jump').click(function () {
+                goPage();
+            });
+            function goPage() {
+                var params = '{$params}';
+                var url = CONTROLLER+"/index?"+params;
+                url += "&p="+$('#txt_page').val();
+                window.location.href = url;
+
+            }
+        });
+
+</script>

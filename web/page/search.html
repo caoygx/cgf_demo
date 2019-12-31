@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<script src="lib/reset.js"></script>
+		<title>选择视频</title>
+		<link rel="stylesheet" href="lib/common.css">
+		<link rel="stylesheet" href="css/search.css">
+	</head>
+
+	<body>
+		<div class="top">
+			<h4>选择视频</h4>
+			<img src="img/t.png" /> 
+			<p onclick="goback()"></p>
+		</div>
+		<div class="searchwrap clear">
+			<p class="clear">
+				<img src="img/v_05.png" class="f" />
+				<input type="text" name="" id="search" placeholder="请搜索视频" value="" />
+				<img src="img/v_08.png" class="c" />
+			</p>
+			<span>搜索</span>
+		</div>
+		<div class="videoListWrap">
+			<div class="videoList clear">
+				<img src="img/v_16.png" class="cover" />
+				<img src="img/v_13.png" class="choice" />
+				<div class="ri">
+					<h4><span>美甲</span>对女生的重要性</h4>
+					<p><span>美甲</span>对女生的重要性<span>美甲</span>对女生的重要性<span>美甲</span>对女生的重要性<span>美甲</span>对女生的重要性</p>
+				</div>
+			</div>
+			<div class="videoList">
+				<img src="img/v_20.png" class="cover" />
+				<img src="img/v_13.png" class="choice" />
+				<div class="ri">
+					<h4><span>美甲</span>对女生的重要性</h4>
+					<p><span>美甲</span>对女生的重要性<span>美甲</span>对女生的重要性<span>美甲</span>对女生的重要性<span>美甲</span>对女生的重要性</p>
+				</div>
+			</div>
+			<div class="videoList">
+				<img src="img/v_22.png" class="cover" />
+				<img src="img/v_13.png" class="choice" />
+				<div class="ri">
+					<h4><span>美甲</span>对女生的重要性</h4>
+					<p><span>美甲</span>对女生的重要性<span>美甲</span>对女生的重要性<span>美甲</span>对女生的重要性<span>美甲</span>对女生的重要性</p>
+				</div>
+
+			</div>
+			<button class="submitBtns">
+				<img src="img/v_25.png"/>
+			</button>
+
+		</div>
+
+	</body>
+	<script src="lib/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function goback() {
+			console.log('000')
+			window.history.go(-1)
+		}
+		$('.videoList').attr('state','true')
+		$('.videoList').click(function() {
+			if ($(this).attr('state')=='true') {
+				$(this).attr('state','false');
+				$(this).addClass('von').find('.choice').show()
+			} else {
+				$(this).attr('state','true')
+				$(this).removeClass('von').find('.choice').hide()
+			}
+			
+		})
+		$('#search').on('input',function(){
+			//ajax请求数据
+			$('.videoListWrap').slideDown(0.3)
+			if ($('#search').val().length==0) {
+				$('.videoListWrap').slideUp(0.3)
+			}
+			
+		})
+	</script>
+
+</html>

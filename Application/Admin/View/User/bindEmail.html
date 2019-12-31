@@ -1,0 +1,37 @@
+<?php
+cookie( '_currentUrl_', $_SERVER['HTTP_REFERER'] );
+?>
+<form class="form-horizontal" role="form" method="post" action="__URL__/save/" >
+
+    <div class="form-group">
+        <label for="mobile" class="col-sm-2 control-label"> 邮箱</label>
+        <div class="col-sm-3">
+            <input class="form-control" name="email" type="text" id="mobile" size="20"
+                   value=""/></div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">保存</button>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript" src="__PUBLIC__/common.js"></script>
+<script>
+
+    $('#btn_get_code').click(function () {
+        var url = '/public/getCode/type/2';
+        var param = {};
+        param['mobile'] = $('#mobile').val();
+        get(url,param,function (data) {
+            if(checkCode(data)){
+                console.log(data);
+            }
+        });
+    });
+
+</script>

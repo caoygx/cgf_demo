@@ -1,0 +1,254 @@
+<div class="right_tab_con">
+
+
+    <div class="container" style="margin-bottom: 20px;">
+    <h3 style="color:#f00; text-align: left">请正确填写真实的信息，如果信息错误，提现将会失败！</h3>
+    </div>
+    <form class="form-horizontal" role="form" method="post" action="__URL__/handlerBank/" enctype="multipart/form-data">
+
+        <!--<div class="form-group"  style="display: none">
+            <label for="id" class="col-sm-2 control-label"> 编号</label>
+            <div class="col-sm-4">
+                <input  type="hidden"  class="form-control" name="id" id="id" size="10" value="{$user.id}" />    </div>
+            <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+        </div>
+    -->
+ 
+        <div class="form-group">
+            <label for="realname" class="col-sm-2 control-label"> 真实姓名</label>
+            <div class="col-sm-4">
+                <input class="form-control" name="realname" type="text" id="realname" size="30"
+                       value="{$user[realname] ? $user[realname] : $_GET[realname]}"/></div>
+            <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label"> 身份证正反面</label>
+
+            <div class="col-sm-3">
+                <h4 style="color: #f00">正面</h4>
+                <input onchange="previewImg(this,'id_card_front')" class="avatar-input" id="id_card_front" name="id_card_front" type="file">
+                <div id='preview_img_id_card_front'>
+                    <notempty name="user['id_card_front']">
+                        <img src="{$user.id_card_front|img}" width='100'/>
+                        <else/>
+                        <img src="{$Think.config.default_pic.id_card_front}" width='100'/>
+                    </notempty>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <h4  style="color: #f00">反面</h4>
+                <input onchange="previewImg(this,'id_card_reverse')" class="avatar-input" id="id_card_reverse" name="id_card_reverse" type="file">
+                <div id='preview_img_id_card_reverse'>
+                    <notempty name="user['id_card_reverse']">
+                        <img src="{$user.id_card_reverse|img}" width='100'/>
+                        <else/>
+                        <img src="{$Think.config.default_pic.id_card_reverse}" width='100'/>
+                    </notempty>
+                </div>
+            </div>
+            <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="alipay_account" class="col-sm-2 control-label"> 支付宝</label>
+            <div class="col-sm-4">
+                <input class="form-control" name="alipay_account" type="text" id="alipay_account" size="30"
+                       value="{$user[alipay_account] ? $user[alipay_account] : $_GET[alipay_account]}"/></div>
+            <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="bank_card_no" class="col-sm-2 control-label"> 银行卡号</label>
+            <div class="col-sm-4">
+                <input class="form-control" name="bank_card_no" type="text" id="bank_card_no" size="30"
+                       value="{$user[bank_card_no] ? $user[bank_card_no] : $_GET[bank_card_no]}"/>
+            </div>
+            <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="bank_name" class="col-sm-2 control-label"> 银行名称</label>
+            <div class="col-sm-4">
+                <input class="form-control" name="bank_name" type="text" id="bank_name" size="30"
+                       value="{$user[bank_name] ? $user[bank_name] : $_GET[bank_name]}"/></div>
+            <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="bank_branch" class="col-sm-2 control-label"> 支行名称</label>
+            <div class="col-sm-4">
+                <input class="form-control" name="bank_branch" type="text" id="bank_branch" size="30"
+                       value="{$user[bank_branch] ? $user[bank_branch] : $_GET[bank_branch]}"/></div>
+            <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span>
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label for="code" class="col-sm-2 control-label">验证码</label>
+            <div class="col-sm-2">
+                <input class="form-control" name="code" type="text" id="code" size="30"
+                       datatype="n"   sucmsg="验证格式正确！" errormsg="验证码必须是数字！"  nullmsg="请填写验证码"  ajaxurl=""  />
+            </div>
+            <div class="col-sm-3 control-label " style="text-align: left;"><span class="Validform_checktip"></span> <a id="btn_get_code" style="width: 85px;"  class="btn btn-primary btn-sm"   > 获取验证码</a></div>
+
+        </div>
+
+       <!-- <div class="form-group">
+            <label for="code" class="col-sm-2 control-label">验证码</label>
+            <div class="col-sm-2">
+                <input class="form-control" name="code" type="text" id="code" size="30"
+                       datatype="n"   sucmsg="验证格式正确！" errormsg="验证码必须是数字！"  nullmsg="请填写验证码"  ajaxurl=""  />
+            </div>
+            <div class="col-sm-3 control-label " style="text-align: left;"><span class="Validform_checktip"></span> <a id="btn_get_code"  class="btn btn-primary btn-sm"   > 获取验证码</a></div>
+
+        </div>-->
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">保存</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<script type="text/javascript" src="__PUBLIC__/common.js"></script>
+<script>
+
+    $(function () {
+        $("form").Validform({
+            tiptype:2
+        });
+    });
+
+/*
+
+$('#btn_get_code').click(function () {
+    var url = '/user/getBindBankCode';
+    var param = {};
+    param['mobile'] = $('#mobile').val();
+    get(url,param,function (data) {
+        if(checkCode(data)){
+            console.log(data);
+        }
+    });
+});
+
+    $('#btn_get_code').click(function () {
+
+
+        mobile = $('#mobile').val();
+        if(!mobile){
+            alert('请先填写手机号');
+            $('#mobile')[0].focus();
+            return false;
+        }
+
+        if(onff){
+            time = setInterval(showLogin,1000);
+        }
+        onff = false;
+
+        var url = '/public/getCode';
+        var param = {};
+        param['mobile'] = $('#mobile').val();
+        get(url,param,function (data) {
+            if(checkCode(data)){
+                alert('验证码已经发送成功，请在手机上查收！');
+                console.log(data);
+            }
+        });
+    });
+
+
+
+
+
+
+*/
+
+
+    var countdownNum = 30;
+    var time = null;
+    var i = countdownNum;
+    var onff = true;
+
+    function countDown(){
+        i--;
+        if(i <= 0){
+            onff = true;
+
+            setElementVal($("#btn_get_code"),'获取验证码');
+            $('#btn_get_code').removeAttr("disabled");
+            clearInterval(time);
+            i=countdownNum;
+            //$("#btn_get_code").css({"background":"none"});
+
+        } else{
+
+            $('#btn_get_code').attr("disabled", "disabled");
+           // $("#btn_get_code").css({"background":"#666"});
+            setElementVal($("#btn_get_code"),i+"s");
+        }
+    }
+
+    function setElementVal(el,value) {
+        if(el[0].tagName == 'input'){
+            el.val(value);
+        }else{
+            el.text(value);
+        }
+    }
+
+    getCode('btn_get_code');
+    function getCode(el,url) {
+
+        $('#'+el).click(function () {
+
+            //手机验证
+            var objMobile = $('#mobile');
+            if(objMobile.length>0){
+                mobile = $('#mobile').val();
+                if(!mobile){
+                    alert('请先填写手机号');
+                    $('#mobile')[0].focus();
+                    return false;
+                }
+            }
+
+
+            //倒计时
+            if(onff){
+                time = setInterval(countDown,1000);
+            }
+            onff = false;
+
+
+            var url = '/user/getBindBankCode';
+            var param = {};
+           if( "undefined" != typeof mobile )   param['mobile'] = mobile;
+
+            //alert('发送');
+            get(url,param,function (data) {
+                if(checkCode(data)){
+                    alert('验证码已发送到手机，请注意查收！');
+                    console.log(data);
+                }
+            });
+        });
+    }
+
+</script>
+
+
+

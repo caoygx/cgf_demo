@@ -1,0 +1,130 @@
+<?php
+cookie( '_currentUrl_', $_SERVER['HTTP_REFERER'] );
+?>
+<form class="form-horizontal" role="form" method="post" action="__URL__/handlerBindMobile/" >
+
+
+    <div class="form-group">
+        <label for="mobile" class="col-sm-2 control-label"> 手机号</label>
+        <div class="col-sm-4">
+            <input class="form-control" name="mobile" type="text" id="mobile" size="30"
+                   datatype="m" nullmsg="请填写手机号"   sucmsg="验证通过！" errormsg="请填写正确的手机号！"  ajaxurl="/user/validformMobileUnique"
+                   value="{$user[mobile] ? $user[mobile] : $_GET[mobile]}"/>
+        </div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="code" class="col-sm-2 control-label">验证码</label>
+        <div class="col-sm-2">
+            <input class="form-control" name="code" type="text" id="code" size="30"
+                   datatype="n"   sucmsg="验证格式正确！" errormsg="验证码必须是数字！"  nullmsg="请填写验证码"  ajaxurl=""  />
+        </div>
+        <div class="col-sm-3 control-label " style="text-align: left;"><span class="Validform_checktip"></span> <a id="btn_get_code"  class="btn btn-primary btn-sm"   > 获取验证码</a></div>
+
+    </div>
+
+    <!--<div class="form-group">
+        <label for="mobile" class="col-sm-2 control-label"> 手机号</label>
+        <div class="col-sm-3">
+            <input class="form-control" name="mobile" type="text" id="mobile" size="20"
+                   value=""/></div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+    </div>
+
+    <div class="form-group">
+        <label for="code" class="col-sm-2 control-label"> 验证码</label>
+        <div class="col-sm-2">
+            <input class="form-control" name="code" type="text" id="code" size="10"
+                   value=""/></div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><label id="btn_get_code">获取验证码</label></div>
+
+    </div>
+-->
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">保存</button>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript" src="__PUBLIC__/common.js"></script>
+
+<script>
+    $(function () {
+        $("form").Validform({
+            tiptype:2
+        });
+    });
+
+
+
+
+
+
+    var countdownNum = 30;
+    var time = null;
+    var i = countdownNum;
+    var onff = true;
+
+    function countDown(){
+        i--;
+        if(i <= 0){
+            onff = true;
+
+            setElementVal($("#btn_get_code"),'获取验证码');
+            $('#btn_get_code').removeAttr("disabled");
+            clearInterval(time);
+            i=countdownNum;
+            //$("#btn_get_code").css({"background":"none"});
+
+        } else{
+
+            $('#btn_get_code').attr("disabled", "disabled");
+            // $("#btn_get_code").css({"background":"#666"});
+            setElementVal($("#btn_get_code"),i+"s");
+        }
+    }
+
+    function setElementVal(el,value) {
+        if(el[0].tagName == 'input'){
+            el.val(value);
+        }else{
+            el.text(value);
+        }
+    }
+
+
+
+
+
+$('#btn_get_code').click(function () {
+        if(!$("#mobile")[0].validform_valid || $('#mobile').hasClass('Validform_error')){
+
+            msg('请先填写正确的手机号');
+            $('#mobile')[0].focus();
+            return false;
+        }
+
+    //倒计时
+    if(onff){
+        time = setInterval(countDown,1000);
+    }
+    onff = false;
+
+
+        var url = '/public/getCode';
+        var param = {};
+        param['mobile'] = $('#mobile').val();
+        param['type'] = 2;
+        get(url,param,function (data) {
+            if(checkCode(data)){
+                console.log(data);
+                msg('验证码已发送，请查看手机短信');
+            }
+        });
+    });
+
+
+</script>

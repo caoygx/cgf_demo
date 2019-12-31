@@ -1,0 +1,58 @@
+<?php
+namespace Test\Controller;
+
+class VodController extends BaseController {
+
+    function testGetVideoInfo(){
+
+        /** @var \User\Controller\OrderController $contrl */
+        //$contrl = A('User/Order');
+        $contrl = new \Admin\Controller\VodController('','Order');
+
+        $payInfo = [];
+        $payInfo['order_no'] = '1709190000000197';
+        $payInfo['pay_order_id'] = 'test001';
+        $payInfo['paymethod'] = 'test001';
+        $payInfo['callback_data'] = 'test001';
+        //$payInfo
+
+        //$r = $contrl->getVideoInfo('74bc8b8d31dc4b1e9fffb7fd8001cc97');
+       // var_dump($r);exit;
+
+       /* $mCategory = D('Category');
+        $r = $mCategory->getAll(0,true);
+        $this->assertGreater(1,count($r));
+        $this->assertArrayHasKey('children',$r[0]);
+
+
+        $r = $mCategory->getAll(0,false);
+        $this->assertNotArrayHasKey('children',$r[0]);*/
+
+       /* $r = $mCategory->getAll(7);
+        var_dump($r);exit;*/
+
+        /*
+        $autotest = A('Doc/Autotest');
+        $params = [];
+        $params['user_id'] = 1;
+        $params['course_id'] = "function|getNotBuyCourseId";
+
+        $this->assertNotEmpty( $autotest->getNotBuyCourseId($params) );
+
+        $t = new \Common\TableInfo();
+
+        $this->assertTrue($t->testTrue());
+
+        */
+    }
+
+    function testDelete(){
+        /** @var \User\Controller\OrderController $contrl */
+        $contrl = new \Admin\Controller\VodController('','Order');
+
+        $r = $contrl->delete('a927d4d01d274e3d986128407f7977a5');
+        var_dump($r);exit;
+    }
+
+
+}

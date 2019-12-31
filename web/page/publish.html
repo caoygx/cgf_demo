@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<script src="lib/reset.js"></script>
+		<title>课程发布</title>
+		<link rel="stylesheet" href="lib/common.css">
+		<link rel="stylesheet" href="css/publish.css">
+	</head>
+
+	<body>
+		<div class="top">
+			<h4>课程发布</h4>
+			<img src="img/t.png" />
+			<p onclick="goback()"></p> 
+		</div>
+		<div class='focusUs clear'>
+			<p>*为必填项</p>
+			<span class="closetips">X</span>
+		</div>
+		<div class="list clear">
+			<p><i>*</i>课 程 名 </p>
+			<input type="text" name="" id="" value="" />
+		</div>
+		<div class="list clear">
+			<p><i></i>子 标 题 </p>
+			<input type="text" name="" id="" value="" placeholder="子标题(可选)" />
+		</div>
+		<div class="list clear">
+			<p><i>*</i>价 格 </p>
+			<input type="text" name="" id="" value="999.9" />
+		</div>
+		<div class="list clear">
+			<p><i>*</i>封 面 图</p>
+			<div class="upload">
+				<img src="img/p_05.png" />
+				<input type="file" name="" id="" value="" />
+			</div>
+
+		</div>
+		<div class="list clear">
+			<p><i>*</i>有效天数</p>
+			<input type="text" name="" id="" value="365" />
+		</div>
+		<div class="list clear">
+			<p><i>*</i>分 类 ID</p>
+			<select name="">
+				<option value="1">美甲</option>
+				<option value="2">美容</option>
+				<option value="3">美甲</option>
+				<option value="4">美甲</option>
+			</select>
+		</div>
+		<div class="list clear">
+			<p><i></i>课程描述</p>
+			<textarea name="" rows="" cols=""></textarea>
+		</div>
+		<div class="list clear">
+			<p><i></i>适应人群</p>
+			<textarea name="" rows="" cols=""></textarea>
+		</div>
+
+		<button class="submitBtn">
+			<img src="img/q_09.png"/>
+		</button>
+
+	</body>
+	<script src="lib/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function goback() {
+			console.log('000')
+			window.history.go(-1)
+		}
+		$('.closetips').click(function() {
+			$(this).parent('.focusUs').hide()
+		})
+	</script>
+
+</html>

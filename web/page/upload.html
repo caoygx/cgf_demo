@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<script src="lib/reset.js"></script>
+	<title>视频上传</title>
+	<link rel="stylesheet" href="lib/common.css">
+	<link rel="stylesheet" href="css/upload.css">
+</head>
+
+<body>
+	<div class="top">
+		<h4>视频上传</h4>
+		<p class="goback"></p>
+		<img src="img/t.png" />
+	</div>
+	<!-- <p class="progress"></p> -->
+	<div class="content">
+		<!-- <p class="title">
+			<input type="text" placeholder="视频名称" name="" id="" value="" />
+		</p> -->
+		<div class="uploading clear">
+			<div class="cover">
+				<img src="img/upicon.png" alt="">
+				<input type="file" name="" id="" value="" />
+			</div>
+			<p class="btns clear">
+				<button class="begin">开始上传</button>
+				<button class="stop">停止上传</button>
+			</p>
+		</div>
+
+		<div class="titles">
+			<textarea name="" placeholder="请输入标题，长度不超过42个字" maxlength="42" rows="" cols=""></textarea>
+		</div>
+		<div class="tags">
+			<input type="text" placeholder="请输入标签，单个不超过10个字，多个用逗号分隔" name="" id="" value="" />
+		</div>
+		<div class="titles desc">
+			<textarea name="" placeholder="请输入描述，不能超过300字" maxlength="300" rows="" cols=""></textarea>
+		</div>
+		<p class="nums">
+			<i>0</i>/300</p>
+
+	</div>
+</body>
+<script src="lib/jquery-1.11.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(function () {
+		$('.desc textarea').on('input', function () {
+			$('.nums i').text($(this).val().length)
+		})
+		$('.goback').click(function () {
+			window.history.go(-1);
+		})
+	}) 
+</script>
+
+</html>

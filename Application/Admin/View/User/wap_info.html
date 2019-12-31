@@ -1,0 +1,79 @@
+
+<body>
+<nav class="bgff">
+    <a id="back" href="javascript:void(0)" class="prev"></a>
+    <strong>资料修改</strong>
+</nav>
+
+<div class="user_head user_edit_head">
+    <div class="user_head_con">
+        <a href="javascript:void(0);">
+            <input type="file" name="" id="" />
+            <img src="{$user.avatar}" alt="">
+        </a>
+
+        <div>上传头像</div>
+    </div>
+</div>
+
+
+
+<!--日期-->
+<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.0-RC3/css/bootstrap-datepicker.css" rel="stylesheet">
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.0-RC3/js/bootstrap-datepicker.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.0-RC3/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+
+<!--日期 支持时间-->
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment-with-locales.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/zh-cn.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<!-- 编辑资料 -->
+<div class="user_edit pub_padding">
+    <form class="form-horizontal" role="form"  method="post" action="__URL__/info/" enctype="multipart/form-data">
+    <ul>
+      <!--  <li>
+            <label>用户名</label>
+            <span>{$user[username]}</span>
+        </li>-->
+        <li>
+            <label>昵称</label>
+            <span><input id="nickname" name="nickname" type="text"  value="{$user[nickname] ? $user[nickname] : $_GET[nickname]}"></span>
+        </li>
+
+
+        <!-- <li>
+             <label>生日</label>
+             <span class="year">
+                     <select name="" id="">
+                         <option value="">1995</option>
+                     </select>
+                     年
+                     <select>
+                         <option value="">2</option>
+                     </select>
+                     月
+                     <select>
+                         <option value="">25</option>
+                     </select>
+                     日
+                 </span>
+         </li>-->
+        <li>
+            <label>性别</label>
+            <span class="gender">
+                    <html:radio radios='opt_sex' checked='sex_selected' name='sex' separator='&nbsp;&nbsp;' />
+                </span>
+        </li>
+        <li>
+                <span class="btns">
+                <input type="submit" value="保存" class="btn btn_on">
+                <input type="submit" value="取消" class="btn"
+                ></span>
+        </li>
+    </ul>
+    </form>
+</div>
+</body>
+
+</html>

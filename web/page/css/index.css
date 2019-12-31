@@ -1,0 +1,138 @@
+.top{
+	width: 7.5rem;
+	height: 0.88rem;
+	margin: 0 auto;
+	font-size: 0;
+	position: relative;
+}
+.top img{
+	width: 7.5rem;
+	height: 0.88rem;
+}
+.top p{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1rem;
+	height: 0.88rem;
+	
+}
+.focusUs {
+  width: 7.50rem;
+  height: .80rem;
+  line-height: .80rem;
+  margin: 0 auto;
+  padding: 0 .30rem;
+  box-sizing: border-box;
+  background: #f9d6db;
+  color: #fb4c62;
+  font-size: .26rem;
+}
+
+.banner {
+  width: 7.50rem;
+  height: 2.98rem;
+  margin: 0 auto;
+}
+
+.banner img {
+  width: 7.50rem;
+  height: 2.98rem;
+}
+
+.section {
+  width: 6.90rem;
+  margin: 0 auto;
+  border-radius: .12rem;
+  overflow: hidden;
+  background: #fff;
+  margin-bottom: .30rem;
+}
+
+.section .title {
+  height: .34rem;
+  width: 6.50rem;
+  line-height: .34rem;
+  font-size: .30rem;
+  margin: .33rem 0;
+  margin-left: .20rem;
+  border-left: .06rem solid #fb4c62;
+  text-indent: .12rem;
+}
+
+.section .title span {
+  font-size: .24rem;
+  color: #999;
+}
+
+.section .content {
+  border-top: .01rem solid #eee;
+  background: #fff6f7;
+  padding-bottom: .26rem;
+}
+
+.section .content div {
+  font-size: .26rem;
+  color: #666;
+  width: 6.70rem;
+  margin-left: .20rem;
+  line-height: 1.5;
+  margin-top: .26rem;
+}
+
+.addressWrap {
+  width: 7.50rem;
+  margin: 0 auto;
+  padding: .36rem .30rem 1.00rem;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.addressWrap .title {
+  height: .34rem;
+  width: 6.50rem;
+  line-height: .34rem;
+  font-size: .30rem;
+  border-left: .06rem solid #fb4c62;
+  text-indent: .12rem;
+  margin-bottom: .20rem;
+}
+
+.addressWrap .contact {
+  font-size: .26rem;
+  color: #666;
+  line-height: 2;
+}
+
+.addressWrap img {
+  width: 2.97rem;
+  height: 2.97rem;
+  display: block;
+  margin: .50rem auto 0;
+}
+
+.addressWrap .gz {
+  font-size: .24rem;
+  height: 1.10rem;
+  line-height: 1.10rem;
+  color: #666;
+  text-align: center;
+}
+
+.kf {
+  width: 1.00rem;
+  height: 1.00rem;
+  position: fixed;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  right: .20rem;
+  bottom: 1.80rem;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.kf img {
+  width: 1.00rem;
+  height: 1.00rem;
+}

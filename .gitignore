@@ -1,0 +1,9 @@
+/.idea
+/tests
+/ThinkPHP/vendor2
+/.project
+/ThinkPHP/vendor
+/Runtime/Cache
+/Runtime/Data
+/Runtime/Logs
+/Runtime/Temp

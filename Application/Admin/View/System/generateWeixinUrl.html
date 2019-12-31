@@ -1,0 +1,15 @@
+
+<input name="url" type="text" id="url" /><br />
+<input name="submit" type="button" id="submit" value="生成" /><br />
+
+<textarea name="wxUrl" id="wxUrl" rows="5" style="width: 500px;" >
+</textarea>
+
+<script>
+    $('#submit').click(function () {
+        var pre='http://u.rrbrr.com/get-weixin-code.html?appid=wxba31372415f71f30&scope=snsapi_userinfo&state=1&redirect_uri=';
+        var url = $('#url').val();
+        url = encodeURIComponent(url);
+        $('#wxUrl').val(pre+url);
+    });
+</script>

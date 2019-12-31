@@ -1,0 +1,56 @@
+<div class="col-md-2">
+
+
+
+    <form class="form-inline" role="form"  method="get" action="__CONTROLLER__/index" target="_blank">
+        <div class="row">
+            <div class="col-xs-8">
+                <input type="text" class="form-control" id="k" name="k" placeholder="接口名，url" value="{$Think.get.k}">
+            </div>
+            <div class="col-xs-1">
+                <button type="submit" class="btn btn btn-info">搜 &nbsp;&nbsp;索</button>
+            </div>
+        </div>
+    </form>
+    <br />
+
+    <notempty name="Think.get.k">
+        <ul class="list-group">
+            <volist id="vo1" name="list">
+                <li class="list-group-item"><a href="__CONTROLLER__/index/id/{vo1.id}/num/{vo1.module}" target="_blank">{vo1.title}
+                    <br /> {vo1.url}</a>
+                </li>
+            </volist>
+
+        </ul>
+        <else />
+
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <volist id="vo1" name="list" key="k">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="heading{$k}">
+                        <h4 class="panel-title" style="height: 20px;">
+                            <a style="display:inline-block; width:100%; height:100% font-site:16px; font-weight:bold;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{$k}" aria-expanded="true" aria-controls="collapse{$k}">
+                                {$key}
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse{$k}" class="panel-collapse collapse  <eq name="Think.get.num" value="$key">in</eq>" role="tabpanel" aria-labelledby="heading{$k}">
+                    <div class="panel-body" style="padding: 0px;">
+                        <ul class="list-group">
+                            <volist name="vo1" id="sub">
+                                <a class="list-group-item <eq name="Think.get.id" value="$sub.id"> active</eq>"
+                                href="__CONTROLLER__/index/id/{$sub.id}/num/{$sub.module}">{$sub.title}</a>
+                            </volist>
+                        </ul>
+
+                    </div>
+                </div>
+        </div>
+        </volist>
+
+</div>
+
+</notempty>
+
+</div>

@@ -1,0 +1,51 @@
+		<!--<h3  class="text-center text-primary" style="margin-bottom:50px;">列表{$type_name}</h3>-->
+		<div class="table-responsive">
+			<table class="table table-bordered  table-hover">
+				<thead>
+				<tr>
+					<td>编号</td>
+					<th>设备id</th>
+					<th>APP_ID</th>
+					<th>在线状态</th>
+					<th>操作</th>
+
+				</tr>
+				</thead>
+				<volist id="vo" name="list">
+				<tr>
+					<td>{$vo.id}</td>
+					<td>{$vo.device}</td>
+					<td>{$vo.app_id}</td>
+					<td>
+						<if condition="$vo.online_status eq 1 ">
+							<span class="btn btn-success  btn-xs">在线</span>
+						<else />
+							<span  class="btn  btn-danger  btn-xs">离线</span>
+						</if>
+					</td>
+
+					<td>
+						<a href="javascript:;" class="btn btn-info btn-xs" onclick="op('{$vo.device}',39);" >登录支付宝</a>
+						<a href="javascript:;" class="btn btn-info btn-xs" onclick="op('{$vo.device}',38);" >转账支付宝</a>
+						<a href="javascript:;" class="btn btn-info btn-xs" onclick="op('{$vo.device}',40);" >转账银行卡</a>
+						<a href="javascript:;" class="btn btn-info btn-xs" onclick="op('{$vo.device}',42);" >查询支付单</a>
+						<a href="javascript:;" class="btn btn-info btn-xs" onclick="op('{$vo.device}',37);" >创建二维码</a>
+						<a href="javascript:;" class="btn btn-info btn-xs" onclick="op('{$vo.device}',43);" >批量二维码</a>
+						<a href="javascript:;" class="btn btn-info btn-xs" onclick="op('{$vo.device}',44);" >配置TeamViewer</a>
+						<a href="javascript:;" class="btn btn-info btn-xs" onclick="op('{$vo.device}',45);" >打开支付宝</a>
+						<a href="javascript:;" class="btn btn-info btn-xs" onclick="op('{$vo.device}',46);" >安装APK</a>
+						<a href="javascript:;" class="btn btn-info btn-xs" onclick="sendLastCommand();"> 重发</a>
+
+
+						<!--<a href="__URL__/index?id=37&device={$vo.device}" class="btn btn-info" >创建二维码</a>
+						<a href="__URL__/index?id=38&device={$vo.device}" class="btn btn-info" >转账支付宝</a>
+						<a href="__URL__/index?id=40&device={$vo.device}" class="btn btn-info" >转账银行卡</a>
+						<a href="__URL__/index?id=42&device={$vo.device}" class="btn btn-info" >查询支付单</a>-->
+					</td>
+				</tr>
+				</volist>
+			</table>
+		</div>
+
+
+

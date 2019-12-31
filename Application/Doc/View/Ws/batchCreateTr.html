@@ -1,0 +1,194 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{$detail.title|default=设备管理}</title>
+  <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+.popover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1010;
+	display: none;
+	max-width: 600px;
+	padding: 1px;
+	text-align: left;
+	white-space: normal;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius: 6px;
+	-webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+	background-clip: padding-box
+}
+</style>
+  <script  src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="__PUBLIC__/jquery.jsonview.css" />
+  
+  <script type="text/javascript" src="__PUBLIC__/jquery.jsonview.js"></script>
+  <script type="text/javascript">
+    var json = {$detail.return_json};
+    $(function() {
+      $("#json").JSONView(json);
+
+      //$("#json-collapsed").JSONView(json, { collapsed: true, nl2br: true, recursive_collapser: true });
+
+      $('#collapse-btn').on('click', function() {
+        $('#json').JSONView('collapse');
+      });
+
+      $('#expand-btn').on('click', function() {
+        $('#json').JSONView('expand');
+      });
+
+      $('#toggle-btn').on('click', function() {
+        $('#json').JSONView('toggle');
+      });
+
+      $('#toggle-level1-btn').on('click', function() {
+        $('#json').JSONView('toggle', 1);
+      });
+
+      $('#toggle-level2-btn').on('click', function() {
+        $('#json').JSONView('toggle', 2);
+      });
+    });
+  </script>
+</head>
+<body>
+
+
+
+
+
+<div class="row" style="margin-top:10px;"></div>
+
+
+	<div class="row">
+		<div class="col-md-2">
+
+
+
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="heading1">
+					<h4 class="panel-title" style="height: 20px;"> <a style="display:inline-block; width:100%; height:100% font-site:16px; font-weight:bold;" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1"> 操作手机 </a> </h4>
+				</div>
+				<div id="collapse1" class="panel-collapse collapse  in" role="tabpanel" aria-labelledby="heading1">
+					<div class="panel-body" style="padding: 0px;">
+						<ul class="list-group">
+							<volist id="vo" name="menu">
+								<a class="list-group-item "    href="__URL__/index?id={$vo.id}&device={$Think.get.device}">{$vo.title}</a>
+							</volist>
+
+							<a class="list-group-item "    href="__URL__/index?id={$vo.id}&device={$Think.get.device}">批量生成二维码</a>
+
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+    
+		</div>
+		<div class="col-md-10">
+			<h3  class="text-center text-primary" style="margin-bottom:50px;">{$type_name}</h3>
+			<form method="get" action="__URL__/batchCreateTrHander" target="_blank" class="form-horizontal">
+				<input type="hidden" id="type" name="type" value="{$type}" />
+				<input type="hidden" id="device" name="device" value="{$Think.get.device}" />
+
+				<div class="form-group" style="margin-bottom: 10px;">
+					<label class="col-sm-4 control-label" for="price">生成价格</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="price" name="price">
+					</div>
+				</div>
+                
+                <div class="form-group" style="margin-bottom: 10px;">
+					<label class="col-sm-4 control-label" for="number">生成数量</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="number" name="number">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-10">
+						<button type="submit" class="btn btn-default">提交</button>
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+<textarea id="fe_text" cols="50" rows="3" style="display:none;">{$vo.return_json}</textarea>
+
+
+ <script type="text/javascript" src="__PUBLIC__/ZeroClipboard.js"></script>
+<script type="text/javascript">
+var clip = new ZeroClipboard( document.getElementById("d_clip_button"), {
+  moviePath: "__PUBLIC__/ZeroClipboard.swf"
+} );
+
+clip.on( 'complete', function(client, args) {
+	alert('复制成功');
+   //alert("复制成功，复制内容为："+ args.text);
+   //复制内容为： args.text
+} );
+
+</script>
+
+<script>
+$(function(){
+	$(".node").on("click",function(){
+		$('#selected_id').val($(this).attr("data-id"));
+		$('#myModal').modal('show');	
+	});
+	
+	/* $("#add").on("click",function(){
+		$('#myModal').modal('hide');  
+		$('#addchild').modal('show');
+    }); */
+	
+	$("#add").on("click",function(){
+		window.location.href="__CONTROLLER__/add/fid/"+$('#selected_id').val();
+	});
+	$("#edit").on("click",function(){
+        window.location.href="__CONTROLLER__/edit/id/"+$('#selected_id').val();
+    });
+});
+
+$(function () { 
+	
+	var url = "__CONTROLLER__/generatePhp?id={$Think.get.id}";
+	$.get(url,function(data){
+		
+		$("[data-toggle='popover']").popover({
+            trigger:'click',  
+            title:"代码，请手工复制", 
+            html: true,  
+            content:'<textarea name="textfield" cols="50" rows="10" id="textfield">'+data+'</textarea>'
+            //content:data+'</textarea>'
+        });
+
+		var currentPopover;
+		$("[data-toggle='popover']").on('shown.bs.popover', function () {
+		if(currentPopover != 'undefined'){
+		$(currentPopover).popover('hide');
+		}
+		currentPopover = this;
+		});
+
+		
+	});
+	
+     	
+});
+
+</script>
+
+</body>
+</html>

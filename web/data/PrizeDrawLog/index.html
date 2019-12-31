@@ -1,0 +1,86 @@
+
+
+
+<div class="row-fluid sortable">
+    <div class="box span12">
+        <div data-original-title="" class="box-header well"> <i class="icon-user"></i> <a href="PrizeDrawLog/add" class="">添加</a>系统</div>
+        <div class="box-content">
+            <form method='get' action="__SELF__"  class="form-inline">
+                  <div class="form-group" >
+    <label for="{$name}"> 活动商品</label>
+    
+       <input mobile-unique class="form-control" name="act_goods_name" type="text" id="act_goods_name" size="10" value="{$vo[act_goods_name] ? $vo[act_goods_name] : $_GET[act_goods_name]}" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="{$name}"> 时间</label>
+    
+       <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="create_t" name="create_t" size="" placeholder=" - "
+                               value="{$Think.get.create_t}">
+                    </div>
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="{$name}"> 会员号</label>
+    
+       <input  class="form-control" name="memberno" type="text" id="memberno" size="" value="{$vo[memberno] ? $vo[memberno] : $_GET[memberno]}" />
+       </div>
+   
+
+  <div class="form-group" >
+    <label for="{$name}"> 渠道</label>
+    
+       <input  class="form-control" name="ch" type="text" id="ch" size="" value="{$vo[ch] ? $vo[ch] : $_GET[ch]}" />
+       </div>
+   
+
+
+		      <button type="submit" class="btn btn-primary">搜索</button>
+		    </form>
+            <br />
+
+           <!-- show="id:编号|8%,title:名称:edit,create_time|toDate='y-m-d':创建时间,status|getStatus2:状态,{$fields}"-->
+
+            <html:list id="checkList" name="vo" style="table table-striped table-bordered bootstrap-datatable datatable" checkbox="true" action="true"  datasource="list" show="id:编号,memberno:会员号,ch:渠道,address:地址,tel:电话,login_mobile:登录手机,phone:电话,cname:,act_issue_id:期号,trans_state_text:发奖状态,prize_state_text:中奖状态,act_goods_name:活动商品,prize_price:奖品价格,prize_level:中奖等级,auc_count:竞拍次数,prize_goods_name:奖品名称,purchase_price:采购价格,draw_state_text:抽奖状态,trans_kuaidi_num:快递单号,create_t:创建时间,act_goods_id:商品id," actionlist="status|showStatus=$user['id'],edit:编辑:id,foreverdel:永久删除:id"/>
+            <div>
+                <a href="javascript:;" onclick="del();" class="btn btn-info"> 批量禁用</a>
+                <a href="javascript:;" onclick="foreverdel();" class="btn btn-danger"> 批量删除</a>
+            </div>
+            <div class="container text-center">
+                {$page}
+                <div style="margin-top:10px;">跳转到<input type="text" style="width: 100px;" id="txt_page" name="txt_page" >页 <input id="btn_jump" type="button" value="跳转"></div>
+                </div>
+ 
+        </div>
+    </div>
+
+</div>
+
+<script src="__PUBLIC__/common/prize_draw_log.js"></script>
+
+<script>
+    <php>
+        $params = I('get.');
+        unset($params['p']);
+        $params = http_build_query($params);
+    </php>
+
+        $(function () {
+            console.log(URL);
+
+            $('#btn_jump').click(function () {
+                goPage();
+            });
+            function goPage() {
+                var params = '{$params}';
+                var url = CONTROLLER+"/index?"+params;
+                url += "&p="+$('#txt_page').val();
+                window.location.href = url;
+
+            }
+        });
+
+</script>

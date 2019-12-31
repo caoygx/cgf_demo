@@ -1,0 +1,130 @@
+
+            <!--账号安全-->
+            <div class="right_tab_con">
+                <div class="account_security">
+                    <!-- 账号安全-->
+                    <h6>账号安全</h6>
+                    <div class="account_con">
+                        <ul class="clearfix">
+                            <li>
+                                <empty name="user['mobile']">
+                                    <div class="not_bind_con">
+                                        <i class="icon1"></i>
+                                        <strong>
+                                            <b>手机未绑定</b>
+                                            <a href="/user/bindMobile">绑定手机</a>
+                                        </strong>
+                                    </div>
+                                <else />
+                                <div class="al_set not_bind_con">
+                                    <i class="icon4"></i>
+                                    <strong>
+                                    <b>手机已绑定</b>
+                                    <a href="/user/bindMobile">绑定手机</a>
+                                    </strong>
+                                </div>
+                                </empty>
+                            </li>
+                            <li>
+                                <empty name="user['email']">
+                                    <div class="not_bind_con">
+                                        <i class="icon5"></i>
+                                        <strong>
+                                            <b>邮箱未绑定</b>
+                                            <a href="bindEmail">绑定邮箱</a>
+                                            </strong>
+                                    </div>
+                                <else />
+                                    <div class="al_set not_bind_con">
+                                        <i class="icon5"></i>
+                                        <strong>
+                                            <b>邮箱已绑定</b>
+                                            <a href="/user/bindEmail">绑定邮箱</a>
+                                        </strong>
+                                    </div>
+                                </empty>
+                            </li>
+
+                           <!-- <li>
+                                <div class="not_bind_con">
+                                    <i class="icon3"></i>
+                                    <strong>
+                                            <b>实名认证</b>
+                                            <a href="#">去认证</a>
+                                            </strong>
+                                </div>
+                            </li>-->
+
+                            <li>
+                                <empty name="alreadySetPassword">
+                                    <div class=" not_bind_con">
+                                        <i class="icon4"></i>
+                                        <div>
+                                            <strong>
+                                        <b>登录密码未设置</b>
+                                        <a href="/user/setPassword">修改</a>
+                                        </strong><br>
+                                            <em>********</em>
+                                        </div>
+                                    </div>
+                                    <else />
+                                    <div class="al_set not_bind_con">
+                                        <i class="icon1"></i>
+                                        <strong>
+                                            <b>登录密码已设置</b>
+                                            <a href="/user/modifyPassword">修改</a>
+                                        </strong>
+                                    </div>
+
+                                </empty>
+                            </li>
+
+                            <!--<li>
+                                <div class="not_bind_con">
+                                    <i class="icon4"></i>
+                                    <strong>
+                                                <b>支付密码未设置</b>
+                                                <a href="#">设置</a>
+                                                </strong>
+                                </div>
+                            </li>-->
+
+                           <!-- <li>
+                                <div class="third_party">
+                                    <h6>第三方账号</h6>
+                                    <div class="clearfix dls">
+                                        <dl>
+                                            <dt>
+                                                <a href="" title="">
+                                                    <img   src="__PU__/images/third_party_icon_03.png" alt="">
+                                                </a>
+                                            </dt>
+                                            <dd><a href="#">去绑定</a></dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>
+                                                <a href="" title="">
+                                                    <img   src="__PU__/images/third_party_icon_05.png" alt="">
+                                                </a>
+                                            </dt>
+                                            <dd><a href="#">去绑定</a></dd>
+                                        </dl>
+                                        <dl>
+                                            <dt>
+                                                <a href="" title="">
+                                                    <img  src="__PU__/images/third_party_icon_07.png" alt="">
+                                                </a>
+                                            </dt>
+                                            <dd><a href="#">去绑定</a></dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </li>
+-->
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+

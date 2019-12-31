@@ -1,0 +1,96 @@
+
+<form class="form-horizontal" role="form" method="post" action="__URL__/info/" enctype="multipart/form-data">
+
+    <!--<div class="form-group"  style="display: none">
+        <label for="id" class="col-sm-2 control-label"> 编号</label>
+        <div class="col-sm-4">
+            <input  type="hidden"  class="form-control" name="id" id="id" size="10" value="{$user.id}" />    </div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+    </div>
+-->
+    <div class="form-group">
+        <label for="username" class="col-sm-2 control-label"> 用户名</label>
+        <div class="col-sm-4">
+            <label class=" control-label"> {$user[username]}</label>
+            <!--<input  disabled="disabled" class="form-control" name="username" type="text" id="username" size="30" value="{$user[username] ? $user[username] : $_GET[username]}" />-->
+        </div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+
+    </div>
+    <div class="form-group">
+        <label for="nickname" class="col-sm-2 control-label"> 昵称</label>
+        <div class="col-sm-4">
+            <input class="form-control" name="nickname" type="text" id="nickname" size="30"
+                   value="{$user[nickname] ? $user[nickname] : $_GET[nickname]}"/></div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+
+    </div>
+    <div class="form-group">
+        <label for="avatar" class="col-sm-2 control-label"> 图像</label>
+        <div class="col-sm-4">
+            <input onchange="previewImg(this,'avatar')" class="avatar-input" id="avatar" name="avatar" type="file">
+            <div id='preview_img_avatar'>
+                <notempty name="user['avatar']">
+                    <img src="{$user.avatar}" width='100'/>
+                    <else/>
+                    <img src="{$Think.config.DEFAULT_IMG}" width='100'/>
+                </notempty>
+            </div>
+        </div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+
+    </div>
+    <div class="form-group">
+        <label for="sex" class="col-sm-2 control-label"> 性别</label>
+        <div class="col-sm-4">
+            <html:radio radios='opt_sex' checked='sex_selected' name='sex' separator='&nbsp;&nbsp;'/>
+        </div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+
+    </div>
+    <div class="form-group">
+        <label for="qq" class="col-sm-2 control-label"> qq</label>
+        <div class="col-sm-4">
+            <input class="form-control" name="qq" type="text" id="qq" size="30"
+                   value="{$user[qq] ? $user[qq] : $_GET[qq]}"/></div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+
+    </div>
+
+
+    <div class="form-group">
+        <label for="birthday" class="col-sm-2 control-label"> 生日</label>
+        <div class="col-sm-4">
+            <div class="input-group date" id="datetimepicker_birthday">
+                <input type="text" id="birthday" name="birthday" class="form-control"
+                       value="{$user[birthday] ? $user[birthday] : $_GET[birthday]}"/>
+                <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+            </div>
+            <script>
+                $(function () {
+                    $("#datetimepicker_birthday").datetimepicker({
+                        format: "YYYY-MM-DD ",
+                    });
+                });
+            </script>
+        </div>
+        <div class="col-sm-2 control-label " style="text-align: left;"><span class="Validform_checktip"></span></div>
+
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">保存</button>
+        </div>
+    </div>
+</form>
+
+<script>
+    $(function () {
+        $("form").Validform({
+            tiptype:2
+        });
+    });
+</script>
+

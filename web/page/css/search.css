@@ -1,0 +1,135 @@
+body{
+	background: #fdfdfd;
+}
+.top{
+	width: 7.5rem;
+	height: 0.88rem;
+	margin: 0 auto;
+	font-size: 0;
+	position: relative;
+}
+.top img{
+	width: 7.5rem;
+	height: 0.88rem;
+}
+.top p{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 1rem;
+	height: 0.88rem;
+	
+}
+
+
+
+
+
+.videoListWrap{
+	width: 6.9rem;
+	background: #fff8f9;
+	display: none;
+	margin: 0 auto;
+	padding-top: 0.2rem;
+	padding-bottom: 0.2rem;
+	border-radius: 0.12rem;
+	
+}
+.videoListWrap .videoList{
+	width: 6.9rem;
+	height: 2.22rem;
+	background: #fff;
+	margin-bottom: 0.2rem;
+	border: 0.01rem solid #eee;
+	border-radius: 0.2rem;
+	padding: 0.2rem;
+	box-sizing: border-box;
+	font-size: 0.24rem;
+	position: relative;
+}
+.von{
+	border: 0.01rem solid #FB4C62 !important;
+}
+.videoListWrap .videoList .cover{
+	width: 2.36rem;
+	height: 1.8rem;
+	float: left;
+}
+.videoListWrap .videoList .ri{
+	width: 3.8rem;
+	float: right;
+}
+.videoListWrap .videoList .ri h4{
+	font-size: .3rem;
+	margin-bottom: 0.16rem;
+}
+.videoListWrap .videoList .ri h4 span{
+	color: #FB4C62;
+}
+.videoListWrap .videoList .ri p{
+	font-size: .24rem;
+	line-height: 1.5;
+}
+.videoListWrap .videoList .choice{
+	display: none;
+	width: 0.67rem;
+	height: 0.67rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.submitBtns{
+	width: 5.24rem;
+	height: 0.94rem;
+	margin: 0.4rem auto 0;
+	display: block;
+	
+}
+.submitBtns img{
+	width: 5.24rem;
+	height: 0.94rem;
+}
+.searchwrap{
+	width: 7rem;
+	margin: 0.3rem auto 0.2rem;
+	height: 0.66rem;
+	line-height: 0.66rem;
+}
+.searchwrap p{
+	width: 6rem;
+	float: left;
+	height: 0.66rem;
+	border: 0.01rem solid #f0f0f0;
+	border-radius: 0.33rem;
+	background: #f8f8f8;
+}
+.searchwrap p input{
+	width: 4.4rem;
+	height: 0.42rem;
+	line-height: 0.42rem;
+	color: #666;
+	padding-left: 0.3rem;
+	margin-top: 0.12rem;
+	float: left;
+	border: none;
+	background: #f8f8f8;
+	outline: none;
+}
+.f{
+	width: 0.32rem;
+	height: 0.34rem;
+	margin-left: 0.3rem;
+	margin-top: 0.16rem;
+	float: left;
+}
+.c{
+	width: 0.26rem;
+	height: 0.26rem;
+	margin-top: 0.2rem;
+	float: left;
+}
+.searchwrap span{
+	font-size: 0.3rem;
+	color: #FB4C62;
+	float: right;
+}
