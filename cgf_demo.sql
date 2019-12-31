@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : c7
-Source Server Version : 50718
-Source Host           : 192.168.16.118:3306
+Source Server         : aliyun
+Source Server Version : 80011
+Source Host           : localhost:3306
 Source Database       : cgf_demo
 
 Target Server Type    : MYSQL
-Target Server Version : 50718
+Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2019-12-31 11:16:37
+Date: 2019-12-31 11:54:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -36,6 +36,30 @@ CREATE TABLE `cgf_admin` (
 INSERT INTO `cgf_admin` VALUES ('1', 'admin', 'c3518ee3ab4862fefdd708f539df8fdf', '1', '1', '2016-10-08/57f9128f80bef.jpg');
 
 -- ----------------------------
+-- Table structure for cgf_auth_group
+-- ----------------------------
+DROP TABLE IF EXISTS `cgf_auth_group`;
+CREATE TABLE `cgf_auth_group` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户组id,自增主键',
+  `module` varchar(20) NOT NULL DEFAULT '' COMMENT '用户组所属模块',
+  `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '组类型',
+  `title` char(20) NOT NULL DEFAULT '' COMMENT '用户组中文名称',
+  `description` varchar(80) NOT NULL DEFAULT '' COMMENT '描述信息',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '用户组状态：为1正常，为0禁用,-1为删除',
+  `rules` varchar(500) NOT NULL DEFAULT '' COMMENT '用户组拥有的规则id，多个规则 , 隔开',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cgf_auth_group
+-- ----------------------------
+INSERT INTO `cgf_auth_group` VALUES ('1', 'admin', '1', '管理员', '', '1', '');
+INSERT INTO `cgf_auth_group` VALUES ('2', 'admin', '1', '测试用户', '测试用户', '1', '1,2,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,79,80,82,83,84,88,89,90,91,92,93,96,97,100,102,103,195');
+INSERT INTO `cgf_auth_group` VALUES ('3', 'admin', '1', '员', '', '1', '');
+INSERT INTO `cgf_auth_group` VALUES ('4', 'admin', '1', '会员', '', '1', '7,8,9,10,11,12,13,14,17,79,211,217');
+INSERT INTO `cgf_auth_group` VALUES ('5', 'admin', '1', '分站长', '', '1', '118');
+
+-- ----------------------------
 -- Table structure for cgf_auth_group_access
 -- ----------------------------
 DROP TABLE IF EXISTS `cgf_auth_group_access`;
@@ -54,6 +78,146 @@ INSERT INTO `cgf_auth_group_access` VALUES ('1', '1');
 INSERT INTO `cgf_auth_group_access` VALUES ('10', '1');
 INSERT INTO `cgf_auth_group_access` VALUES ('11', '1');
 INSERT INTO `cgf_auth_group_access` VALUES ('12', '5');
+
+-- ----------------------------
+-- Table structure for cgf_auth_rule
+-- ----------------------------
+DROP TABLE IF EXISTS `cgf_auth_rule`;
+CREATE TABLE `cgf_auth_rule` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '规则id,自增主键',
+  `pid` int(10) unsigned NOT NULL DEFAULT '0',
+  `module` varchar(20) NOT NULL COMMENT '规则所属module',
+  `type` tinyint(2) NOT NULL DEFAULT '1' COMMENT '1-url;2-主菜单',
+  `name` char(80) NOT NULL DEFAULT '' COMMENT '规则唯一英文标识',
+  `title` char(20) NOT NULL DEFAULT '' COMMENT '规则中文描述',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效(0:无效,1:有效)',
+  `condition` varchar(300) NOT NULL DEFAULT '' COMMENT '规则附加条件',
+  `icon` varchar(255) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`),
+  KEY `module` (`module`,`status`,`type`)
+) ENGINE=MyISAM AUTO_INCREMENT=119 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of cgf_auth_rule
+-- ----------------------------
+INSERT INTO `cgf_auth_rule` VALUES ('1', '0', 'admin', '2', '', '抽奖管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('2', '1', 'admin', '1', 'prizeDrawLog', '中奖管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('3', '0', 'admin', '2', '', '订单相关', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('4', '3', 'admin', '1', 'goods/', '商品管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('5', '3', 'admin', '1', 'order/', '订单管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('6', '3', 'admin', '1', 'order/repair', '补单', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('7', '3', 'admin', '1', 'order/backMoney', '返币', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('8', '3', 'admin', '1', 'recharge', '充值记录', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('9', '3', 'admin', '1', 'duibaCreditsRecord', '积分记录', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('10', '3', 'admin', '1', 'express', '快递', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('11', '3', 'admin', '1', 'rechargeCard', '手机充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('12', '0', 'admin', '2', '', '用户', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('13', '12', 'admin', '1', 'user', '用户管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('14', '12', 'admin', '1', 'prizeSpecialUser', '黑名单用户', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('15', '12', 'admin', '1', 'userSubsidy', '用户补贴查询', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('16', '12', 'admin', '1', 'userProfile', '用户画像', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('17', '12', 'admin', '1', 'logRequest', '用户访问记录', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('18', '0', 'admin', '2', '', '竞拍监测', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('19', '18', 'admin', '1', 'goodsActivity/running', '在拍商品', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('20', '0', 'admin', '2', '', '评论', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('21', '20', 'admin', '1', 'faq', '问题反馈', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('22', '20', 'admin', '1', 'orderShow', '评论管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('23', '0', 'admin', '2', '', '活动', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('24', '23', 'admin', '1', 'actGoods', '活动列表', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('25', '23', 'admin', '1', 'actGoodsInner', '活动商品列表', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('26', '0', 'admin', '2', '', '统计报表', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('27', '26', 'admin', '1', 'dataCh', '拍卖渠道注册充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('28', '26', 'admin', '1', 'dataBill', '充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('29', '26', 'admin', '1', 'inoutMoneyData', '充值拍卖抽奖', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('30', '26', 'admin', '1', 'regLoginBillData', '新增日活充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('31', '26', 'admin', '1', 'shareRebateData', '邀请', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('32', '26', 'admin', '1', 'chData', '渠道统计', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('33', '26', 'admin', '1', 'chDataNew', '渠道统计', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('34', '26', 'admin', '1', 'stNewUser', '新用户拍中比', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('35', '26', 'admin', '1', 'customTrans', '转化', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('36', '26', 'admin', '1', 'customQuality', '留存', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('37', '0', 'admin', '2', '', '数据分析', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('38', '0', 'admin', '2', '', '系统', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('39', '38', 'admin', '1', 'index/editor', '编辑器', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('40', '0', 'admin', '2', '', '抽奖管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('41', '40', 'admin', '1', 'prizeDrawLog', '中奖管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('42', '0', 'admin', '2', '', '订单相关', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('43', '42', 'admin', '1', 'goods/', '商品管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('44', '42', 'admin', '1', 'order/', '订单管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('45', '42', 'admin', '1', 'order/repair', '补单', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('46', '42', 'admin', '1', 'order/backMoney', '返币', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('47', '42', 'admin', '1', 'recharge', '充值记录', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('48', '42', 'admin', '1', 'duibaCreditsRecord', '积分记录', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('49', '42', 'admin', '1', 'express', '快递', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('50', '42', 'admin', '1', 'rechargeCard', '手机充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('51', '0', 'admin', '2', '', '用户', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('52', '51', 'admin', '1', 'user', '用户管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('53', '51', 'admin', '1', 'prizeSpecialUser', '黑名单用户', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('54', '51', 'admin', '1', 'userSubsidy', '用户补贴查询', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('55', '51', 'admin', '1', 'userProfile', '用户画像', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('56', '51', 'admin', '1', 'logRequest', '用户访问记录', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('57', '0', 'admin', '2', '', '竞拍监测', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('58', '57', 'admin', '1', 'goodsActivity/running', '在拍商品', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('59', '0', 'admin', '2', '', '评论', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('60', '59', 'admin', '1', 'faq', '问题反馈', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('61', '59', 'admin', '1', 'orderShow', '评论管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('62', '0', 'admin', '2', '', '活动', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('63', '62', 'admin', '1', 'actGoods', '活动列表', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('64', '62', 'admin', '1', 'actGoodsInner', '活动商品列表', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('65', '0', 'admin', '2', '', '统计报表', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('66', '65', 'admin', '1', 'dataCh', '拍卖渠道注册充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('67', '65', 'admin', '1', 'dataBill', '充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('68', '65', 'admin', '1', 'inoutMoneyData', '充值拍卖抽奖', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('69', '65', 'admin', '1', 'regLoginBillData', '新增日活充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('70', '65', 'admin', '1', 'shareRebateData', '邀请', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('71', '65', 'admin', '1', 'chData', '渠道统计', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('72', '65', 'admin', '1', 'chDataNew', '渠道统计', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('73', '65', 'admin', '1', 'stNewUser', '新用户拍中比', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('74', '65', 'admin', '1', 'customTrans', '转化', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('75', '65', 'admin', '1', 'customQuality', '留存', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('76', '0', 'admin', '2', '', '数据分析', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('77', '0', 'admin', '2', '', '系统', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('78', '77', 'admin', '1', 'index/editor', '编辑器', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('79', '0', 'admin', '2', '', '抽奖管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('80', '79', 'admin', '1', 'prizeDrawLog', '中奖管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('81', '0', 'admin', '2', '', '订单相关', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('82', '81', 'admin', '1', 'goods/', '商品管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('83', '81', 'admin', '1', 'order/', '订单管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('84', '81', 'admin', '1', 'order/repair', '补单', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('85', '81', 'admin', '1', 'order/backMoney', '返币', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('86', '81', 'admin', '1', 'recharge', '充值记录', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('87', '81', 'admin', '1', 'duibaCreditsRecord', '积分记录', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('88', '81', 'admin', '1', 'express', '快递', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('89', '81', 'admin', '1', 'rechargeCard', '手机充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('90', '0', 'admin', '2', '', '用户', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('91', '90', 'admin', '1', 'user', '用户管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('92', '90', 'admin', '1', 'prizeSpecialUser', '黑名单用户', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('93', '90', 'admin', '1', 'userSubsidy', '用户补贴查询', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('94', '90', 'admin', '1', 'userProfile', '用户画像', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('95', '90', 'admin', '1', 'logRequest', '用户访问记录', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('96', '0', 'admin', '2', '', '竞拍监测', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('97', '96', 'admin', '1', 'goodsActivity/running', '在拍商品', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('98', '0', 'admin', '2', '', '评论', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('99', '98', 'admin', '1', 'faq', '问题反馈', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('100', '98', 'admin', '1', 'orderShow', '评论管理', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('101', '0', 'admin', '2', '', '活动', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('102', '101', 'admin', '1', 'actGoods', '活动列表', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('103', '101', 'admin', '1', 'actGoodsInner', '活动商品列表', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('104', '0', 'admin', '2', '', '统计报表', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('105', '104', 'admin', '1', 'dataCh', '拍卖渠道注册充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('106', '104', 'admin', '1', 'dataBill', '充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('107', '104', 'admin', '1', 'inoutMoneyData', '充值拍卖抽奖', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('108', '104', 'admin', '1', 'regLoginBillData', '新增日活充值', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('109', '104', 'admin', '1', 'shareRebateData', '邀请', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('110', '104', 'admin', '1', 'chData', '渠道统计', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('111', '104', 'admin', '1', 'chDataNew', '渠道统计', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('112', '104', 'admin', '1', 'stNewUser', '新用户拍中比', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('113', '104', 'admin', '1', 'customTrans', '转化', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('114', '104', 'admin', '1', 'customQuality', '留存', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('115', '0', 'admin', '2', '', '数据分析', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('116', '0', 'admin', '2', '', '系统', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('117', '116', 'admin', '1', 'index/editor', '编辑器', '1', '', '');
+INSERT INTO `cgf_auth_rule` VALUES ('118', '104', 'admin', '1', 'chDataNew', '渠道', '1', '', '');
 
 -- ----------------------------
 -- Table structure for cgf_category
@@ -201,13 +365,13 @@ CREATE TABLE `cgf_log_request` (
   `user_id` int(11) DEFAULT '0' COMMENT '用户id--取cookie必须可以为null',
   `url` varchar(1024) NOT NULL,
   `ip` char(15) NOT NULL DEFAULT '',
-  `detail` longtext CHARACTER SET utf8mb4 NOT NULL COMMENT '详情|0',
+  `detail` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '详情|0',
   `user_agent` text NOT NULL COMMENT '浏览器|0',
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `params` longtext NOT NULL COMMENT '参数|0',
   `method` char(6) NOT NULL DEFAULT '' COMMENT '请求方式',
   `cookie` varchar(1000) NOT NULL DEFAULT '' COMMENT 'cookie|0',
-  `response` longtext CHARACTER SET utf8mb4 COMMENT '返回内容|0',
+  `response` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '返回内容|0',
   `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间|0',
   `rinse_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '数据清洗状态',
   PRIMARY KEY (`id`)
@@ -2720,14 +2884,5 @@ GROUP BY ch,date
 ORDER BY date DESC 
 ) e on a.ch=e.ch_e AND a.date=e.date_e
 ;
-;;
-DELIMITER ;
-
--- ----------------------------
--- Event structure for update_roi
--- ----------------------------
-DROP EVENT IF EXISTS `update_roi`;
-DELIMITER ;;
-CREATE DEFINER=`root`@`%` EVENT `update_roi` ON SCHEDULE EVERY 1 DAY STARTS '2019-01-24 03:00:00' ON COMPLETION NOT PRESERVE ENABLE DO CALL update_roi()
 ;;
 DELIMITER ;

@@ -152,14 +152,14 @@ $conf = array(
 
     'URL_MODEL'             => 2, //默认1;URL模式：0 普通模式 1 PATHINFO 2 REWRITE 3 兼容模式
     'ROUTER_ON'             => true, // 是否开启URL路由
-    'DEFAULT_MODULE'        => 'Admin',
+    'DEFAULT_MODULE'        => '',
     'APP_SUB_DOMAIN_DEPLOY' => 1, // 开启子域名配置
     'APP_SUB_DOMAIN_RULES'  => array(
         'www'     => 'Home',
         'u'       => 'User',
         'm'       => 'Home',
         'api'     => 'Home',
-        'cgf'     => 'Admin',
+        'cc'     => 'Admin',
         'admin' => 'Admin',
         'test'    => 'Test',
 
