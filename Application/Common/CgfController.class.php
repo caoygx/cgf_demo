@@ -855,6 +855,84 @@ class CgfController extends CommonController implements FrameworkInterface
     }
 
 
+    public function show($content="",$charset='',$contentType='',$prefix=''){
+
+        //自动获取添加模板
+        layout(false);
+        $tpl = $this->generateShowTpl();
+        layout(true);
+
+
+        $this->pageTitle = $this->getControllerTitle(CONTROLLER_NAME) . "显示";
+        $this->cgf       = "cgf";
+
+        $id = I('id');
+        $vo = $this->m->getById ( $id );
+        if (method_exists ( $this, '_show' )) {
+            $this->_show ( $vo );
+        }
+        $this->vo = $vo;
+        $this->toview();
+
+    }
+
+
+    function generateShowTpl($isEdit=false)
+    {
+        $htmlAdd = $this->cgf->generateShow($isEdit);
+
+        //配置select选项和选中值
+        $options = $this->cgf->getAllColumnOptions();
+        foreach ($options as $column => $option) {
+            $this->assign('opt_' . $column, $option);
+            $this->assign($column . '_selected', I($column));
+        }
+
+        //$this->control = CONTROLLER_NAME;//
+        //$this->control = '__CONTROLLER__';// 生成模板时用这个
+        $arrTplParameter['control']  = CONTROLLER_NAME;
+        $arrTplParameter['html_add'] = $htmlAdd;
+        //$this->htmlSearch = $htmlSearch;
+        //$this->js_name=$this->cgf->tableName;
+        $arrTplParameter['js_name'] = $this->cgf->tableName;
+        //var_dump($arrTplParameter);
+
+        $file    = APP_PATH . MODULE_NAME . "/View/Public/tpl_show" . C('TMPL_TEMPLATE_SUFFIX');
+        if(!file_exists($file)){
+            exit('no exist tpl_show');
+        }
+        $content = file_get_contents($file);
+
+        foreach ($arrTplParameter as $k => $v) {
+            $content = str_replace('{$' . $k . '}', $v, $content);
+        }
+        //var_dump($content);exit;
+
+        if ($this->generateFile) {
+            //生成模板文件到data目录下
+            $dir = "./data/" . CONTROLLER_NAME;
+            if (!file_exists($dir)) mkdir($dir, 0777, true);
+            $filename = $dir . "/show.html";
+            file_put_contents($filename, $content);
+
+        } else {
+
+            //直接在项目下创建模板
+            $dir = APP_PATH . MODULE_NAME . "/View/" . CONTROLLER_NAME;
+            if (!file_exists($dir)) mkdir($dir, 0777, true);
+            $filename = $dir . "/show.html";
+            if ($this->cgf->definition->isLockDefinition($this->m->getTableName())) $this->forceWrite = false;
+            if ($this->forceWrite || !file_exists($filename)) {
+                file_put_contents($filename, $content);
+            }
+            //return $content;
+
+        }
+
+        $r = $this->fetch("", $content);
+        return $r;
+    }
+
     function getSelectFields_xxxx()
     {
         $tableInfo = new TableInfo('list', $this->dbConnection);

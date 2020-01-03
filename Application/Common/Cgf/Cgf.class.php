@@ -353,13 +353,31 @@ class Cgf
         }
 
         $definition = $this->definition->edit;
-//var_dump($definition);exit;
         $html = "";
         foreach ($definition as $k => $v) {
             $htmlInput = $this->form->generate($k, $v);
             //var_dump($htmlInput);exit;
             $html .= $this->form->generateAddInput($htmlInput, $v);
         }
+        return $html;
+    }
+
+
+    function generateShow($isEdit=false)
+    {
+        if($isEdit){
+            $definition = $this->definition->edit;
+        }else{
+            $definition = $this->definition->add;
+        }
+
+        $definition = $this->definition->edit;
+        $html = "";
+        foreach ($definition as $k => $v) {
+            $htmlInput = $this->form->generateShow($k, $v);
+            $html .= $this->form->generateShowInput($htmlInput, $v);
+        }
+
         return $html;
     }
 
@@ -375,27 +393,10 @@ class Cgf
         return $html;
     }*/
 
-    function generateEdit_old()
-    {
-        $html = "";
-        $generateForm = new generateForm();
-        $definition = $this->definition['edit'];
-        foreach ($definition as $k => $v) {
-            $row = [];
-            $row['html'] = $generateForm->generate($k, $v);
-            $row['tips'] = "";
-            $row['zh'] = "";
-            $row['name'] = "";
-        }
-        echo $html;
-        exit;
-    }
 
     function generateForm($tableName)
     {
-
         $definition = $this->definition;
-
     }
 
     function getAllColumnOptions()

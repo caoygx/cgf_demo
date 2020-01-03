@@ -30,6 +30,18 @@ class BootstrapForm extends Form
         return call_user_func_array([$this, $definition['type']], []);
     }
 
+    function generateShow($name, $definition)
+    {
+        $this->name       = $name;
+        $this->definition = $definition;
+        if (empty($definition['type'])) {
+            $definition['type'] = 'text';
+        }
+        $tpl_row = '{$vo.'.$name.'}';
+        return $tpl_row;
+
+    }
+
     function generateSearchInput($htmlInput, $v)
     {
         $htmlTpl   = file_get_contents($this->tplDir . "/tpl_search_input.html");
@@ -46,6 +58,21 @@ class BootstrapForm extends Form
     function generateAddInput($htmlInput, $v)
     {
         $htmlTpl = file_get_contents($this->tplDir . "/tpl_add_input.html");
+        if ($v['type'] == 'hidden') $style = "display: none";
+        $arrAssign = [
+            '{$inputStr}' => $htmlInput,
+            '{$tips}'     => "",
+            '{$cnName}'   => $v['zh'],
+            '{$name}'     => $v['name'],
+            '{$type}'     => $v['type'],
+            '{$style}'    => $style,
+        ];
+        return str_replace(array_keys($arrAssign), array_values($arrAssign), $htmlTpl);
+    }
+
+    function generateShowInput($htmlInput, $v)
+    {
+        $htmlTpl = file_get_contents($this->tplDir . "/tpl_show_input.html");
         if ($v['type'] == 'hidden') $style = "display: none";
         $arrAssign = [
             '{$inputStr}' => $htmlInput,

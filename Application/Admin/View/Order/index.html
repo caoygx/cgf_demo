@@ -58,7 +58,7 @@
 
 
            <!-- show="id:编号|8%,title:名称:edit,create_time|toDate='y-m-d':创建时间,status|getStatus2:状态,{$fields}"-->
-            <html:list id="checkList" name="vo" style="table table-striped table-bordered bootstrap-datatable datatable" checkbox="true" action="true"  datasource="list" show="id:编号::sort,order_id:订单号::sort,goods_id:商品ID::sort,goods_name:订单商品名称::sort,name:商品名::sort,type_text:商品类型,openid:三方id::sort,title:商品分类::sort,thumb|show_img:商品图::sort,status_text:订单状态,user_type_text:用户类型,ch:渠道::sort,memberno:会员号::sort,address:地址::sort,mobile:手机::sort,realname:姓名::sort,company:快递公司::sort,express_id:快递id::sort,express_no:快递单号::sort,create_t:订单时间::sort," actionlist="edit:编辑:id,order_view_recharge:查看充值记录:openid"/>
+            <html:list id="checkList" name="vo" style="table table-striped table-bordered bootstrap-datatable datatable" checkbox="true" action="true"  datasource="list" show="id:编号::sort,order_id:订单号::sort,goods_id:商品ID::sort,goods_name:订单商品名称::sort,name:商品名::sort,type_text:商品类型,openid:三方id::sort,title:商品分类::sort,thumb|show_img:商品图::sort,status_text:订单状态,user_type_text:用户类型,ch:渠道::sort,memberno:会员号::sort,address:地址::sort,mobile:手机::sort,realname:姓名::sort,company:快递公司::sort,express_id:快递id::sort,express_no:快递单号::sort,create_t:订单时间::sort," actionlist="edit:取消:id,show:查看:id"/>
             <div>
                 <php>if(1==1){</php>
                 <a href="javascript:;" onclick="del();" class="btn btn-info"> 批量禁用</a>

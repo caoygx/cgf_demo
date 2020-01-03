@@ -160,7 +160,6 @@ $conf = array(
         'm'       => 'Home',
         'api'     => 'Home',
         'cc'     => 'Admin',
-        'admin' => 'Admin',
         'test'    => 'Test',
 
     ),

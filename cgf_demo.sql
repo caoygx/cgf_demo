@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : aliyun
-Source Server Version : 80011
-Source Host           : localhost:3306
+Source Server         : c7
+Source Server Version : 50718
+Source Host           : 192.168.16.118:3306
 Source Database       : cgf_demo
 
 Target Server Type    : MYSQL
-Target Server Version : 80011
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2019-12-31 11:54:57
+Date: 2020-01-02 18:53:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -33,7 +33,7 @@ CREATE TABLE `cgf_admin` (
 -- ----------------------------
 -- Records of cgf_admin
 -- ----------------------------
-INSERT INTO `cgf_admin` VALUES ('1', 'admin', 'c3518ee3ab4862fefdd708f539df8fdf', '1', '1', '2016-10-08/57f9128f80bef.jpg');
+INSERT INTO `cgf_admin` VALUES ('1', 'admin', '21232f297a57a5a743894a0e4a801fc3', '1', '1', '2016-10-08/57f9128f80bef.jpg');
 
 -- ----------------------------
 -- Table structure for cgf_auth_group
@@ -325,61 +325,36 @@ CREATE TABLE `cgf_goods` (
 -- ----------------------------
 -- Records of cgf_goods
 -- ----------------------------
-INSERT INTO `cgf_goods` VALUES ('1', 'Apple iPad mini 4 平板电脑 7.9英寸', '3288.00', '0.00', '3288.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '1', '备注', '1501741029', '1532074304');
-INSERT INTO `cgf_goods` VALUES ('2', 'Apple iPhone 7 128G', '5799.00', '0.00', '5799.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '2', '备注', '1501741158', '1527219082');
-INSERT INTO `cgf_goods` VALUES ('3', 'Apple iPhone 7 128G 红色特别版 移动联通电信4G手机', '5799.00', '0.00', '5799.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '3', '备注', '1501741248', '1529055816');
-INSERT INTO `cgf_goods` VALUES ('4', 'Apple iPhone 8 ', '520.00', '0.00', '520.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '4', '备注', '1501741362', '1527219108');
-INSERT INTO `cgf_goods` VALUES ('5', 'OPPO R11 全网通4G+64G 双卡双待手机 热力红色', '3199.00', '0.00', '3199.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '5', '备注', '1501741501', '1527219127');
-INSERT INTO `cgf_goods` VALUES ('6', '小米6 6GB+64GB 亮黑色 移动联通电信4G手机 双卡双待', '2799.00', '0.00', '2799.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '6', '备注', '1501741587', '1531225732');
-INSERT INTO `cgf_goods` VALUES ('7', 'Apple iPad Pro 平板电脑 12.9英寸（64G WLAN版/A10X芯片/Retina屏/Multi-Touch技术 MQDC2CH/A）银色', '5988.00', '0.00', '5988.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '3', '27', '0.00', '0', '7', '备注', '1501741691', '1535447237');
-INSERT INTO `cgf_goods` VALUES ('8', 'Beats Solo2 Wireless 头戴式耳机 - 白色 蓝牙无线 带麦', '1688.00', '0.00', '1488.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '8', '备注', '1501741785', '1527219141');
-INSERT INTO `cgf_goods` VALUES ('9', '全球购 亚马逊Kindle Oasis电子书阅读器', '3088.00', '0.00', '2399.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '9', '备注', '1501741895', '1527219182');
-INSERT INTO `cgf_goods` VALUES ('10', 'Apple iPhone 7 Plus (A1661) 128G 移动联通电信4G手机', '6578.00', '0.00', '6578.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '10', '备注', '1501741968', '1532059674');
-INSERT INTO `cgf_goods` VALUES ('11', '佳能（Canon）EOS 70D 单反相机套装 佳能70d 佳能EF-S 18-135mm IS STM', '8499.00', '0.00', '8499.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '11', '备注', '1501742161', '1527219206');
-INSERT INTO `cgf_goods` VALUES ('12', 'paperang喵喵机P1热敏打印机手机照片打印机便携迷你口袋蓝牙打印机', '239.00', '0.00', '239.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '12', '备注', '1501742392', '1527219221');
-INSERT INTO `cgf_goods` VALUES ('13', 'Apple iPhone 6s Plus (A1699) 128G ', '4899.00', '0.00', '4899.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '13', '备注', '1501742558', '1527219237');
-INSERT INTO `cgf_goods` VALUES ('14', 'Apple MacBook Pro 13.3英寸笔记本电脑 深空灰色（Multi-Touch Bar/Core i5/8GB/256GB MLH12CH/A）', '13888.00', '0.00', '13888.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '14', '备注', '1501742927', '1527219247');
-INSERT INTO `cgf_goods` VALUES ('15', '索尼（SONY）【PS4 Pro 国行主机】PlayStation 4 Pro 电脑娱乐游戏主机 1TB（黑色）', '2999.00', '0.00', '2999.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '15', '备注', '1501743443', '1527219262');
-INSERT INTO `cgf_goods` VALUES ('16', '小米7', '100.00', '0.00', '106.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '2', '16', '备注', '1501743582', '1527154529');
-INSERT INTO `cgf_goods` VALUES ('17', '红米6', '50.00', '0.00', '53.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '2', '17', '备注', '1501744835', '1527154520');
-INSERT INTO `cgf_goods` VALUES ('18', '小米 plus', '10.00', '0.00', '10.60', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '2', '18', '备注', '1501745306', '1529057022');
-INSERT INTO `cgf_goods` VALUES ('19', 'TSL谢瑞麟 黄金手链 新款足金镂空转运珠手链 送女友 16+3CM手链 YL765 5.2g', '1965.00', '0.00', '1965.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '19', '备注', '1501751318', '1532074268');
-INSERT INTO `cgf_goods` VALUES ('20', '香奈儿（Chanel）香水女士香水淡香持久 粉色邂逅50ml', '638.00', '0.00', '638.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '20', '备注', '1501752219', '1527219297');
-INSERT INTO `cgf_goods` VALUES ('21', 'Beats Solo3 Wireless 蓝牙无线头戴式降噪线控苹果B耳机 红色 通用版', '1799.00', '0.00', '1799.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '1', '999', '27', '0.00', '0', '21', '备注', '1501753667', '1527219310');
-INSERT INTO `cgf_goods` VALUES ('22', '锤子 坚果Pro 64GB 碳黑色 全网通 移动联通电信4G手机 双卡双待', '1799.00', '0.00', '1799.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '22', '备注', '1501832116', '1527219320');
-INSERT INTO `cgf_goods` VALUES ('23', '大疆（DJI）精灵Phantom 3 SE 4K智能航拍无人机 入门良选', '3499.00', '0.00', '3499.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '23', '备注', '1501832211', '1527219331');
-INSERT INTO `cgf_goods` VALUES ('24', '【Xbox无线手柄】微软（Microsoft）Xbox无线控制器/手柄 特遣奇兵限量版', '459.00', '0.00', '459.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '24', '备注', '1501832332', '1527219341');
-INSERT INTO `cgf_goods` VALUES ('25', 'Chanel香奈儿男士持久香水 蔚蓝男士淡香100ML 男士香水', '888.00', '0.00', '888.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '25', '备注', '1501832396', '1527219353');
-INSERT INTO `cgf_goods` VALUES ('26', '平安银行 鸡年金章银钞 丁酉年纪念套装 足金雄鸡报晓邮票金章 不动明王银钞', '990.00', '0.00', '990.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '26', '备注', '1501832473', '1532074255');
-INSERT INTO `cgf_goods` VALUES ('27', '中钞鉴定 2016版熊猫金币 首日封装版 纪念币', '1960.00', '0.00', '1960.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '27', '备注', '1501832529', '1527219370');
-INSERT INTO `cgf_goods` VALUES ('28', '蚁视 ANTVR 二代 VR眼镜 高端VR头显 虚拟现实VR一体机 空间游戏 3D电影 扩展级', '4399.00', '0.00', '4399.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '28', '备注', '1501832654', '1527219384');
-INSERT INTO `cgf_goods` VALUES ('29', '惠普（HP）惠普小印口袋照片打印机Sprocket 100(白) +惠普（HP）Z9X76A ZINK惠普小印口袋照片打印机相纸', '1058.00', '0.00', '1058.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '29', '备注', '1502422799', '1532074242');
-INSERT INTO `cgf_goods` VALUES ('30', 'Apple iMac 27英寸一体机（四核Core i5 处理器/8GB内存/2TB Fusion Drive/RP580显卡/5K屏 MNED2CH/A）', '18288.00', '0.00', '18288.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '22', '0.00', '0', '30', '备注', '1502437615', '1532071882');
-
--- ----------------------------
--- Table structure for cgf_log_request
--- ----------------------------
-DROP TABLE IF EXISTS `cgf_log_request`;
-CREATE TABLE `cgf_log_request` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号---sort',
-  `user_id` int(11) DEFAULT '0' COMMENT '用户id--取cookie必须可以为null',
-  `url` varchar(1024) NOT NULL,
-  `ip` char(15) NOT NULL DEFAULT '',
-  `detail` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '详情|0',
-  `user_agent` text NOT NULL COMMENT '浏览器|0',
-  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
-  `params` longtext NOT NULL COMMENT '参数|0',
-  `method` char(6) NOT NULL DEFAULT '' COMMENT '请求方式',
-  `cookie` varchar(1000) NOT NULL DEFAULT '' COMMENT 'cookie|0',
-  `response` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci COMMENT '返回内容|0',
-  `update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间|0',
-  `rinse_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '数据清洗状态',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='访问日志表';
-
--- ----------------------------
--- Records of cgf_log_request
--- ----------------------------
+INSERT INTO `cgf_goods` VALUES ('1', 'Apple iPhone 1', '3288.00', '0.00', '3288.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '1', '备注', '1501741029', '1532074304');
+INSERT INTO `cgf_goods` VALUES ('2', 'Apple iPad 1', '5799.00', '0.00', '5799.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '2', '备注', '1501741158', '1527219082');
+INSERT INTO `cgf_goods` VALUES ('3', 'Apple MacBook 1', '5799.00', '0.00', '5799.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '3', '备注', '1501741248', '1529055816');
+INSERT INTO `cgf_goods` VALUES ('4', '小米1', '520.00', '0.00', '520.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '4', '备注', '1501741362', '1527219108');
+INSERT INTO `cgf_goods` VALUES ('5', '红米1', '3199.00', '0.00', '3199.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '5', '备注', '1501741501', '1527219127');
+INSERT INTO `cgf_goods` VALUES ('6', 'Apple iPhone 2', '2799.00', '0.00', '2799.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '6', '备注', '1501741587', '1531225732');
+INSERT INTO `cgf_goods` VALUES ('7', 'Apple iPad 2', '5988.00', '0.00', '5988.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '3', '27', '0.00', '0', '7', '备注', '1501741691', '1535447237');
+INSERT INTO `cgf_goods` VALUES ('8', 'Apple MacBook 2', '1688.00', '0.00', '1488.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '8', '备注', '1501741785', '1527219141');
+INSERT INTO `cgf_goods` VALUES ('9', '小米2', '3088.00', '0.00', '2399.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '9', '备注', '1501741895', '1527219182');
+INSERT INTO `cgf_goods` VALUES ('10', '红米2', '6578.00', '0.00', '6578.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '10', '备注', '1501741968', '1532059674');
+INSERT INTO `cgf_goods` VALUES ('11', 'Apple iPhone 3', '8499.00', '0.00', '8499.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '11', '备注', '1501742161', '1527219206');
+INSERT INTO `cgf_goods` VALUES ('12', 'Apple iPad 3', '239.00', '0.00', '239.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '12', '备注', '1501742392', '1527219221');
+INSERT INTO `cgf_goods` VALUES ('13', 'Apple MacBook 3', '4899.00', '0.00', '4899.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '13', '备注', '1501742558', '1527219237');
+INSERT INTO `cgf_goods` VALUES ('14', '小米1', '13888.00', '0.00', '13888.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '14', '备注', '1501742927', '1527219247');
+INSERT INTO `cgf_goods` VALUES ('15', '红米1', '2999.00', '0.00', '2999.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '15', '备注', '1501743443', '1527219262');
+INSERT INTO `cgf_goods` VALUES ('16', 'Apple iPhone 2', '100.00', '0.00', '106.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '2', '16', '备注', '1501743582', '1527154529');
+INSERT INTO `cgf_goods` VALUES ('17', 'Apple iPad 2', '50.00', '0.00', '53.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '2', '17', '备注', '1501744835', '1527154520');
+INSERT INTO `cgf_goods` VALUES ('18', 'Apple MacBook 2', '10.00', '0.00', '10.60', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '2', '18', '备注', '1501745306', '1529057022');
+INSERT INTO `cgf_goods` VALUES ('19', '小米2', '1965.00', '0.00', '1965.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '19', '备注', '1501751318', '1532074268');
+INSERT INTO `cgf_goods` VALUES ('20', '红米2', '638.00', '0.00', '638.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '20', '备注', '1501752219', '1527219297');
+INSERT INTO `cgf_goods` VALUES ('21', 'Apple iPhone 1', '1799.00', '0.00', '1799.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '1', '999', '27', '0.00', '0', '21', '备注', '1501753667', '1527219310');
+INSERT INTO `cgf_goods` VALUES ('22', 'Apple iPad 1', '1799.00', '0.00', '1799.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '22', '备注', '1501832116', '1527219320');
+INSERT INTO `cgf_goods` VALUES ('23', 'Apple MacBook 1', '3499.00', '0.00', '3499.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '23', '备注', '1501832211', '1527219331');
+INSERT INTO `cgf_goods` VALUES ('24', '小米1', '459.00', '0.00', '459.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '24', '备注', '1501832332', '1527219341');
+INSERT INTO `cgf_goods` VALUES ('25', '红米1', '888.00', '0.00', '888.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '25', '备注', '1501832396', '1527219353');
+INSERT INTO `cgf_goods` VALUES ('26', 'Apple iPhone 2', '990.00', '0.00', '990.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '26', '备注', '1501832473', '1532074255');
+INSERT INTO `cgf_goods` VALUES ('27', 'Apple iPad 2', '1960.00', '0.00', '1960.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '27', '备注', '1501832529', '1527219370');
+INSERT INTO `cgf_goods` VALUES ('28', 'Apple MacBook 2', '4399.00', '0.00', '4399.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '28', '备注', '1501832654', '1527219384');
+INSERT INTO `cgf_goods` VALUES ('29', '小米2', '1058.00', '0.00', '1058.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '27', '0.00', '0', '29', '备注', '1502422799', '1532074242');
+INSERT INTO `cgf_goods` VALUES ('30', '红米2', '18288.00', '0.00', '18288.00', 'https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1026016199,1338164578&fm=26&gp=0.jpg', '0', '999', '22', '0.00', '0', '30', '备注', '1502437615', '1532071882');
 
 -- ----------------------------
 -- Table structure for cgf_order
@@ -2884,5 +2859,14 @@ GROUP BY ch,date
 ORDER BY date DESC 
 ) e on a.ch=e.ch_e AND a.date=e.date_e
 ;
+;;
+DELIMITER ;
+
+-- ----------------------------
+-- Event structure for update_roi
+-- ----------------------------
+DROP EVENT IF EXISTS `update_roi`;
+DELIMITER ;;
+CREATE DEFINER=`root`@`%` EVENT `update_roi` ON SCHEDULE EVERY 1 DAY STARTS '2019-01-24 03:00:00' ON COMPLETION NOT PRESERVE ENABLE DO CALL update_roi()
 ;;
 DELIMITER ;

@@ -131,53 +131,63 @@ return [
 
 
     'edit' => [
-        'goods_name' => [
-            'type'       => 'text',
-            'size'       => 10,
-            'validation' => 'mobile-unique',
-        ],
-        'content'        => [
-            'type'      => 'editor',
-            'size'      => 10,
-            'component' => 'fck',//编辑器组件 kindeditor
-        ],
-        'create_t'       => [
-            'type'   => 'datetimePicker',//时间
-            'format' => 'y-m-d H:i:s',
-        ],
-        'draw_state'     => [
-            'type'    => 'select',
-            'options' => [
-                0 => '未中奖',
-                1 => '已中奖'
-            ],
-        ],
-        'memberno'       => [
-            'type' => 'text',
-        ]
+        'id'          => [],
+
+
+        'order_id'    => [],
+        'goods_id'    => [],
+        'goods_name'  => [],
+        'name'        => [],
+        'type'        => [],
+
+        'openid'      => [],
+
+        'title'       => [],
+        'thumb'       => [],
+        'status'      => [],
+        'user_type'   => [],
+        'ch'          => [],
+        'memberno'    => [],
+        'address'     => [],
+        'mobile'      => [],
+        'realname'    => [],
+
+
+        'company'     => [],
+        'express_id'  => [],
+        'express_no'  => ['zh' => '快递单号'],
+
+        'create_t'    => [],
     ],
 
     'add' => [
-        'act_goods_name' => [
-            'type' => 'text',
-        ],
-        'create_t'       => [
-            'type'   => 'datetimePicker',//时间
-            'format' => 'y-m-d H:i:s',
-        ],
-        /* 'ch' => [
-             'type' => 'select',//文件上传
-         ],*/
-        'draw_state'     => [
-            'type'    => 'select',
-            'options' => [
-                0 => '未中奖',
-                1 => '已中奖'
-            ],
-        ],
-        'memberno'       => [
-            'type' => 'text',
-        ]
+        'id'          => [],
+
+
+        'order_id'    => [],
+        'goods_id'    => [],
+        'goods_name'  => [],
+        'name'        => [],
+        'type'        => [],
+
+        'openid'      => [],
+
+        'title'       => [],
+        'thumb'       => [],
+        'status'      => [],
+        'user_type'   => [],
+        'ch'          => [],
+        'memberno'    => [],
+        'address'     => [],
+        'mobile'      => [],
+        'realname'    => [],
+
+
+        'company'     => [],
+        'express_id'  => [],
+        'express_no'  => ['zh' => '快递单号'],
+
+        'create_t'    => [],
     ],
 
     'search' => [
@@ -216,8 +226,8 @@ return [
     'tableInfo' =>
         array(
             'title'    => '用户',
-            'property' => 'lock',
-            'action'   => 'edit:取消:id,view:查看:order_id',
+            //'property' => 'lock',
+            'action'   => 'edit:取消:id,show:查看:id',
             'name'     => 'pm_user',
         ),
 ];

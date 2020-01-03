@@ -129,7 +129,7 @@ function delcache() {
     window.location.reload();
 
 }
-function show() {
+function showMenu() {
     if (document.getElementById('menu').style.display != 'none')
     {
         document.getElementById('menu').style.display = 'none';
@@ -503,6 +503,16 @@ function press_send(id) {
     
 }
 
+function show(id){
+    if (!id)
+    {
+        alert('id不为能空');
+        return false;
+    }
+    window.open(CONTROLLER + "/show/id/" + id);
+    //location.href = CONTROLLER + "/edit/id/" + keyValue;
+    //location.href =  CONTROLLER+"/edit/id/"+keyValue;
+}
 
 
 //+---------------------------------------------------

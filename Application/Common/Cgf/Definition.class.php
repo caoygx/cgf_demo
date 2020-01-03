@@ -191,7 +191,7 @@ class Definition
     }
 
     function compileTableInfo($tableInfo){
-        $commonOperation = ['add','edit','delete','resume','resume','pass'];
+        $commonOperation = ['add','edit','delete','show','resume','resume','pass'];
         $action = $tableInfo['action'];
         $arrAction = explode(',',$action);
 
