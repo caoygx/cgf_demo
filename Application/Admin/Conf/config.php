@@ -29,8 +29,8 @@ return array(
             'title'    => "订单相关",
             'url'      => '',
             'children' => [
-                ["title" => '商品管理', "url" => '/admin/goods/'],
-                ["title" => '订单管理', "url" => '/admin/order/'],
+                ["title" => '商品管理', "url" => '/admin/goods'],
+                ["title" => '订单管理', "url" => '/admin/order'],
                 ["title" => '快递', "url" => '/admin/express'],
 
             ]

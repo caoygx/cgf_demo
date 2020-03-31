@@ -1,12 +1,22 @@
+<form class="form-inline ml-3">
+    <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+            <button class="btn btn-navbar" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+</form>
 
 
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
 
-<div class="row-fluid sortable">
-    <div class="box span12">
-        <div data-original-title="" class="box-header well"><!-- <i class="icon-user"></i> <a href="add" class=""></a>{$pageTitle}--></div>
-        <div class="box-content">
-            <form method='get' action="__SELF__"  class="form-inline">
-                  <div class="form-group" >
+                <form method='get' action="__SELF__" class="form-inline">
+                      <div class="form-group" >
     <label for="id"> ID</label>
     
        <input  type="hidden"  class="form-control" name="id" id="id"  value="{$vo.id}" />
@@ -84,40 +94,50 @@
    
 
 
-		      <button type="submit" class="btn btn-primary">搜索</button>
-		    </form>
-            <br />
-            <php>  $query = strstr($_SERVER["REQUEST_URI"],'?');    </php>
-
-            <php>if(0==1){</php>
-            <a href="__CONTROLLER__/add" type="button" class="btn btn-warning">添加</a>
-            <php>}</php>
-
-
-            <php>if(1==1){</php>
-            <a href="__CONTROLLER__/exportExcel<?=$query?>" type="button" class="btn btn-warning">导出</a>
-            <php>}</php>
-
-
-           <!-- show="id:编号|8%,title:名称:edit,create_time|toDate='y-m-d':创建时间,status|getStatus2:状态,{$fields}"-->
-            <html:list id="checkList" name="vo" style="table table-striped table-bordered bootstrap-datatable datatable" checkbox="true" action="true"  datasource="list" show="id:ID::sort,name:商品名::sort,price:市场价::sort,orgial_price:原价::sort,pur_price:成本::sort,thumb|show_img:缩略图::sort,status_text:状态,sort:商品排序::sort,user_id:用户id::sort,weight:重量::sort,type_text:类型,category_id:商品分类::sort,modify_t:修改时间::sort," actionlist="edit:编辑:id,goods_del:删除:id"/>
-            <div>
-                <php>if(0==1){</php>
-                <a href="javascript:;" onclick="del();" class="btn btn-info"> 批量禁用</a>
-                <php>}</php>
+                    <button type="submit" class="btn btn-primary">搜索</button>
+                </form>
+                <br/>
+                <php> $query = strstr($_SERVER["REQUEST_URI"],'?');</php>
 
                 <php>if(0==1){</php>
-                <a href="javascript:;" onclick="foreverdel();" class="btn btn-danger"> 批量删除</a>
+                <a href="__CONTROLLER__/add" type="button" class="btn btn-warning">添加</a>
                 <php>}</php>
+
+
+                <php>if(1==1){</php>
+                <a href="__CONTROLLER__/exportExcel<?=$query?>" class="btn btn-block btn-info btn-sm col-1">导出</a>
+                <php>}</php>
+
+
             </div>
-            <div class="container text-center">
-                {$page}
-                <div style="margin-top:10px;">跳转到<input type="text" style="width: 100px;" id="txt_page" name="txt_page" >页 <input id="btn_jump" type="button" value="跳转"></div>
-                </div>
- 
-        </div>
-    </div>
 
+            <!-- show="id:编号|8%,title:名称:edit,create_time|toDate='y-m-d':创建时间,status|getStatus2:状态,{$fields}"-->
+            <div class="card-body">
+                <html:list id="checkList" name="vo"
+                           style="table table-striped table-bordered bootstrap-datatable datatable"
+                           checkbox="true" action="true" datasource="list" show="id:ID::sort,name:商品名::sort,price:市场价::sort,orgial_price:原价::sort,pur_price:成本::sort,thumb|show_img:缩略图::sort,status_text:状态,sort:商品排序::sort,user_id:用户id::sort,weight:重量::sort,type_text:类型,category_id:商品分类::sort,modify_t:修改时间::sort," actionlist="edit:编辑:id,goods_del:删除:id"/>
+
+
+                <div>
+                    <php>if(0==1){</php>
+                    <a href="javascript:;" onclick="del();" class="btn btn-info"> 批量禁用</a>
+                    <php>}</php>
+
+                    <php>if(0==1){</php>
+                    <a href="javascript:;" onclick="foreverdel();" class="btn btn-danger"> 批量删除</a>
+                    <php>}</php>
+                </div>
+                <div class="container text-center">
+                    {$page}
+                    <div style="margin-top:10px;">跳转到<input type="text" style="width: 100px;" id="txt_page"
+                                                            name="txt_page">页
+                        <input id="btn_jump" type="button" value="跳转"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </div>
 
 <script src="__PUBLIC__/common/goods.js"></script>
@@ -143,5 +163,8 @@
 
             }
         });
+
+
+
 
 </script>
