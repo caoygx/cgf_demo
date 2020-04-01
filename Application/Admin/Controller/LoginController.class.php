@@ -30,7 +30,7 @@ class LoginController extends Controller
                     $rAuthRule = M('authRule')->where(['name'=>$redirectUrl])->find();
                     $redirectUrl = $rAuthRule['name']; //获取跳转url,由于原权限名被转成小写，导致无法跳转。
                 }
-                $redirectUrl = '/'.$redirectUrl;
+                $redirectUrl = '/admin/'.$redirectUrl;
                 //var_dump($redirectUrl);exit;
                 $this->redirect($redirectUrl);
 
