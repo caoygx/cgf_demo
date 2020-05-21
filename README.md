@@ -27,6 +27,10 @@ http://cgf.rrbrr.com/
 账号 admin
 密码 admin
 
+# 基于thinkphp6的版本
+https://github.com/caoygx/cgf_cms
+
+
 
 
 
