@@ -39,7 +39,7 @@ class SqlToCgfDefinition
     public $saveDefinitionDir = "";
 
 
-    public $tablePrefix = "pm_";
+    public $tablePrefix = "cgf_";
     public $allModuleDefinition = [];
     public $enableModule=false;
     public $tableInfoHandle = null;
@@ -51,11 +51,12 @@ class SqlToCgfDefinition
      * @param string $module 模块
      * @param TableInfoInterface|null $tableInfoHandle 表信息解析器
      */
-    function __construct($tableName, $module = "common",TableInfoInterface $tableInfoHandle=null)
+    function __construct($tableName, $module = "common",TableInfoInterface $tableInfoHandle=null,$tablePrefix='')
     {
         $this->currentModule = $module;
         $this->tableName = $tableName;
         $this->saveDefinitionDir = APP_PATH."/Common/Cgf/definition";
+        if(!empty($tablePrefix)) $this->tablePrefix = $tablePrefix;
 
         //if(empty($tableInfoHandle)) $tableInfoHandle = new MysqlTableInfo();
         $this->tableInfoHandle = $tableInfoHandle;

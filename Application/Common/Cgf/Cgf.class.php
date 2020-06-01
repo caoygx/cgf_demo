@@ -47,7 +47,7 @@ class Cgf
         $this->tableFullName = $tableName;
 
         //生成cgf配置文件
-        $d = new SqlToCgfDefinition($tableName,$module,$tableInfo);
+        $d = new SqlToCgfDefinition($tableName,$module,$tableInfo,$prefix);
 
 
         //去表前缀
